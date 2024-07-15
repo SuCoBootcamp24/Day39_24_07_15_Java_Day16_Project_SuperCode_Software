@@ -1,4 +1,3 @@
-import java.lang.classfile.instruction.ThrowInstruction;
 import java.time.LocalDate;
 
 public class Student extends Person {
