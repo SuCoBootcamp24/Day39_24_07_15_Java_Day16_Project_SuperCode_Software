@@ -2,9 +2,7 @@ import java.time.LocalDate;
 
 public class Person {
 
-    public static long getLastID() {
-        return lastID;
-    }
+    public static long getLastID = 0;
     private String lastname;
     private String firstname;
     private static long lastID;
