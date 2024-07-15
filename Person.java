@@ -43,15 +43,4 @@ public class Person {
     public LocalDate getBirthday() {
         return birthday;
     }
-
-    @Override
-    public String toString() {
-        return "Student " + this.ID + ": " +
-                "DOB: " + birthday + 
-                "Address: " + address + 
-                "Email: " + email;
-    }
-
-    
-
 }
