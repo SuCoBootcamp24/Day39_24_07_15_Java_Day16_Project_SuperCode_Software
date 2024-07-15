@@ -12,9 +12,8 @@ public class EducationalCompany {
     private ArrayList<Course> courseList = new ArrayList<>();
 
 
-    public EducationalCompany(String name, Ceo ceo, LocalDate foundingDate, String category) {
+    public EducationalCompany(String name, LocalDate foundingDate, String category) {
         setName(name);
-        setCeo(ceo);
         this.foundingDate = foundingDate;
         setCategory(category);
     }
@@ -84,11 +83,6 @@ public class EducationalCompany {
     }
 
     //------other
-
-
-    public void changeCeo(Ceo ceo) {
-
-    }
 
     public void addTrainer(Trainer trainer) {
 
