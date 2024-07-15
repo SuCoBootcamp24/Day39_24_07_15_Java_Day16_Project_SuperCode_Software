@@ -1,4 +1,3 @@
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -50,6 +49,4 @@ public class Course {
     public int getMAX_STUDENT() {
         return MAX_STUDENT;
     }
-
-
 }

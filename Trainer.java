@@ -1,4 +1,3 @@
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -33,5 +32,4 @@ public class Trainer extends Person {
                 "DOB: " + super.getBirthday() +
                 "Licenses: " + licenses.toString();
     }
-    
 }

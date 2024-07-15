@@ -13,5 +13,4 @@ public class Student extends Person {
     public void setCourse(Course course) {
         this.hisCourse = course;
     }
-    
 }
