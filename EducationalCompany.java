@@ -12,6 +12,7 @@ public class EducationalCompany {
     private ArrayList<Course> courseList = new ArrayList<>();
 
 
+
     public EducationalCompany(String name, LocalDate foundingDate, String category) {
         setName(name);
         this.foundingDate = foundingDate;
