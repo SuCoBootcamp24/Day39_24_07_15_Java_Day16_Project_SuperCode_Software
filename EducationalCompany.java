@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class EducationalCompany {
 
     private Ceo ceo;
+    private String name;
     private LocalDate foundingDate;
     private String category;
     private ArrayList<Trainer> trainerList = new ArrayList<>();
@@ -11,13 +12,25 @@ public class EducationalCompany {
     private ArrayList<Course> courseList = new ArrayList<>();
 
 
-    public EducationalCompany(Ceo ceo, LocalDate foundingDate, String category) {
+    public EducationalCompany(String name, Ceo ceo, LocalDate foundingDate, String category) {
+        setName(name);
         setCeo(ceo);
         this.foundingDate = foundingDate;
         setCategory(category);
     }
     
     //-----Getter / Setter-----
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    //---
     public Ceo getCeo() {
         return ceo;
     }
