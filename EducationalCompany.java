@@ -12,7 +12,9 @@ public class EducationalCompany {
 
 
     public EducationalCompany(Ceo ceo, LocalDate foundingDate, String category) {
-
+        setCeo(ceo);
+        this.foundingDate = foundingDate;
+        setCategory(category);
     }
     
     //-----Getter / Setter-----
@@ -24,14 +26,12 @@ public class EducationalCompany {
         this.ceo = ceo;
     }
 
+
     //---
     public LocalDate getFoundingDate() {
         return foundingDate;
     }
 
-    public void setFoundingDate(LocalDate foundingDate) {
-        this.foundingDate = foundingDate;
-    }
 
     //---
     public String getCategory() {
