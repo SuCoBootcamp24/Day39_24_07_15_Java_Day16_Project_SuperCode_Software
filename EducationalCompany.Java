@@ -15,10 +15,6 @@ public class EducationalCompany {
 
     public EducationalCompany(String name, LocalDate foundingDate, String category) {
         setName(name);
-=======
-    public EducationalCompany(Ceo ceo, LocalDate foundingDate, String category) {
-        setCeo(ceo);
->>>>>>> 2207aa3 (update EducationalCompany)
         this.foundingDate = foundingDate;
         setCategory(category);
     }
