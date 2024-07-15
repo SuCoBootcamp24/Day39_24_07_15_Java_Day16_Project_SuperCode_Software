@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 public class Ceo extends Person{
 
-    private ArrayList<EducationalCompany> campanyList = new ArrayList<>();
+    private ArrayList<EducationalCompany> companyList = new ArrayList<>();
     private LocalDate inCompany;
 
-    public Ceo(String lastname, String firstname, LocalDate birthday, String address, String email, LocalDate inCompany, EducationalCompany educationalCompany) {
+    public Ceo(String firstname, String lastname, LocalDate birthday, String address, String email, LocalDate inCompany, EducationalCompany educationalCompany) {
         super(lastname, firstname, birthday, address, email);
         addCampany(educationalCompany);
         setInCompany(inCompany);
@@ -14,15 +14,18 @@ public class Ceo extends Person{
     }
 
 
-    public ArrayList<EducationalCompany> getCampanyList() {
-        return campanyList;
+    public ArrayList<EducationalCompany> getCompanyList() {
+        return companyList;
     }
 
     public void addCampany(EducationalCompany company) {
 
-        if (this.campanyList.contains(company))this.campanyList.add(company);
+        if (!this.companyList.contains(company))this.companyList.add(company);
     }
 
+    public void removeCompany(EducationalCompany company) {
+        if (getCompanyList().contains(company)) getCompanyList().remove(company);
+    }
 
     public LocalDate getInCompany() {
         return inCompany;
@@ -32,4 +35,25 @@ public class Ceo extends Person{
         this.inCompany = inCompany;
     }
 
+    @Override
+    public String toString() {
+        String message = "Ceo: " + getFirstname() + " " + getLastname() + "\n" +
+                        "Birthday: " + getBirthday() +
+                        "Ceo since:: " + getInCompany() + "\nCompanys:\n";
+
+        for (EducationalCompany e : companyList) {
+            if (e != null) message += "\t" + e.getName() + "\n";
+        }
+
+        return message;
+    }
+
+    public void printCompanys() {
+        System.out.println("The Company(s) of " + getFirstname() + " " + getLastname() + ":");
+
+        for (EducationalCompany e : companyList) {
+            if (e != null) System.out.println("\t" + e.getName());
+        }
+
+    }
 }
