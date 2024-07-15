@@ -1,3 +1,6 @@
+
+import java.lang.classfile.instruction.ThrowInstruction;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -48,5 +51,27 @@ public class Course {
     
     public int getMAX_STUDENT() {
         return MAX_STUDENT;
+    }
+
+    public void addModule(Module module) {
+        // to implementieren
+        // -verifyModuleTasks()
+        // -verifyModuleTime()
+
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public long calcCourseTimeInDays() {
+        Duration duration = Duration.between(startingDate, endingDate);
+        return duration.toDays();
+    }
+
+    public void printModules(){
+        for (Module module : modules) {
+            System.out.println(module.toString());
+        }
     }
 }
