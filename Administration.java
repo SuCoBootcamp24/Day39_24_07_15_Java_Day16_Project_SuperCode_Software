@@ -35,6 +35,7 @@ public class Administration {
         LocalDate end1 = LocalDate.of(2024, 03, 01);
         LocalDate start2 = LocalDate.of(2024, 04, 02);
         LocalDate end2 = LocalDate.of(2024, 04, 07);
+        LocalDate end3 = LocalDate.of(2024, 04, 06);
 
         Module module1 = new Module("module1", start1, end1, "JAVA");
         Module module2 = new Module("module2", start2, end2, "HTML");
@@ -48,14 +49,15 @@ public class Administration {
         // System.out.println(module1);
         // module1.printTrainerForThisModule();
 
-        Course course1 = new Course("test-course", birthday, inCompanyDate);
+        Course course1 = new Course("test-course", start1, end3);
         course1.addModule(module1);
         course1.addModule(module2);
         course1.printModules();
         
-        
-        
-        
+        course1.addStudent(student1);
+
+        student1.addJobBegin(end2);
+        System.out.println(student1.calcDiffDaysToJobBeginn());
     
 
 

@@ -56,21 +56,29 @@ public class Course {
 
     public void addModule(Module module) {
         boolean weHaveEnoughTasks = module.verifyModuleTasks();
+        boolean isInCourseTime = (module.getStart().isEqual(getStartingDate())  || (module.getStart().isAfter(getStartingDate()) && module.getEnd().isEqual(getEndingDate()))
+        || module.getEnd().isBefore(getEndingDate()));
         boolean fitsWithModulesTime = verifyModuleTime(module);
-        if (weHaveEnoughTasks && fitsWithModulesTime)
-            modules.add(module);
-        else if (!weHaveEnoughTasks && fitsWithModulesTime)
-            System.out.println("Module " + module.getId() + " not added - Not enough tasks");
-        else System.out.println("Module " + module.getId() + " not added - Time is overlapping");
-    }
+
+        if (isInCourseTime) {
+            if (weHaveEnoughTasks && fitsWithModulesTime)
+              modules.add(module);
+            else if (!weHaveEnoughTasks && fitsWithModulesTime)
+                System.out.println("Module " + module.getId() + " not added - Not enough tasks");
+            else System.out.println("Module " + module.getId() + " not added - Time is overlapping");
+        } else System.out.println("Module " + module.getId() + " is out of Corse - Module not added!");
+        }
 
     private boolean verifyModuleTime(Module module) {
-        for (Module m : modules) {
-            boolean isOverlapping = module.getEnd().isAfter(m.getStart()) && module.getStart().isBefore(m.getEnd());
-            if (isOverlapping)
-                return false;
-        }
-        return true;
+        boolean isOverlapping = false;
+
+            for (Module m : modules) {
+                isOverlapping = module.getEnd().isAfter(m.getStart()) && module.getStart().isBefore(m.getEnd());
+                if (isOverlapping)
+                    return false;
+
+                }
+                return true;
     }
 
     public void removeModule(Module module) {
@@ -83,6 +91,7 @@ public class Course {
         if (students.contains(student))
             throw new IllegalStateException("Student already enrolled in the course");
         students.add(student);
+        student.setCourse(this);
     }
 
     public void removeStudent(Student student) {

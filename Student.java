@@ -44,7 +44,8 @@ public class Student extends Person {
             System.out.println("Student did not start to work yet");
             return -1;
         }
-        Duration duration = Duration.between(LocalDate.now(), jobBegin); // anpassen hier kommt das ende des kurses und der Jobbeginn rein.
+        System.out.println(hisCourse.getEndingDate() + "   " + jobBegin);
+        Duration duration = Duration.between(hisCourse.getEndingDate().atStartOfDay(), jobBegin.atStartOfDay()); // anpassen hier kommt das ende des kurses und der Jobbeginn rein.
         return (int) duration.toDays();
     }
 
