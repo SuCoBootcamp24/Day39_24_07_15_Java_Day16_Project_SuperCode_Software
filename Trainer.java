@@ -22,14 +22,14 @@ public class Trainer extends Person {
     public void addLicenseToList(String license) {
         if (license.isEmpty())
             throw new IllegalArgumentException("String of new lincense is Empty.");
-        licenses.add(license);
+        if(!getLicenses().contains(license)) licenses.add(license);
     }
     
     @Override
     public String toString() {
-        return "Trainer " + super.getID() + " " +
-                super.getFirstname() + " " + super.getLastname() + ": " +
-                "DOB: " + super.getBirthday() +
-                "Licenses: " + licenses.toString();
+        return "Trainer " + getID() + " " +
+                getFirstname() + " " + getLastname() + ": " +
+                "DOB: " + getBirthday() +
+                " Licenses: " + licenses.toString();
     }
 }

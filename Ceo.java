@@ -19,7 +19,7 @@ public class Ceo extends Person{
     }
 
     public void addCampany(EducationalCompany company) {
-
+        if (company == null) throw new IllegalArgumentException("String of new company is Empty.");
         if (!this.companyList.contains(company))this.companyList.add(company);
     }
 

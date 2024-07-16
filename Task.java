@@ -1,10 +1,13 @@
 public class Task {
     
     private String name;
+    private String level;
     private int duration;
 
-    public Task(String name, int duration){
-
+    public Task(String name, String level, int duration){
+        setName(name);
+        setLevel(level);
+        setDuration(duration);
     }
 
 
@@ -15,6 +18,14 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 
    //---
@@ -28,6 +39,6 @@ public class Task {
 
 
     public String toString() {
-        return null;
+        return getName()+ ", Level: " + getLevel() + ", Duration: " + getDuration() + "Day(s)";
     }
 }

@@ -45,11 +45,10 @@ public class Person {
     }
 
     @Override
-    public String toString() {
-        return "Student " + this.ID + ": " +
-                "DOB: " + birthday + 
-                "Address: " + address + 
-                "Email: " + email;
+     public String toString() {
+        String message = getFirstname() + " " + getLastname() + "\nEmail: " +getEmail() + "\nBirthday: " + getBirthday() + "\nAdress: " + getAddress();
+        return message;
+        
     }
 
     

@@ -1,5 +1,7 @@
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Module {
     
@@ -10,14 +12,16 @@ public class Module {
     private HashMap<Task, Integer> taskList = new HashMap<>();
     private LocalDate start;
     private LocalDate end;
+    private String requiredLicense;
     private Trainer trainer;
     private Trainer assistent;
 
 
-    public Module(String name, LocalDate start, LocalDate end) {
+    public Module(String name, LocalDate start, LocalDate end, String requiredLicense) {
         setName(name);
         setStart(start);
         setEnd(end);
+        setRequiredLicense(requiredLicense);
         this.id = lastId++;
     }
 
@@ -46,6 +50,15 @@ public class Module {
         this.taskList = taskList;
     }
 
+    //----
+
+    public String getRequiredLicense() {
+        return requiredLicense;
+    }
+
+    public void setRequiredLicense(String requiredLicense) {
+        this.requiredLicense = requiredLicense;
+    }
 
     //----
     public LocalDate getStart() {
@@ -87,34 +100,45 @@ public class Module {
 
     //----other---
 
+    public void addTaskToList(Task task) {
+        if(task == null)   throw new IllegalArgumentException("new Task is Empty.");
+        if(!getTaskList().containsKey(task)) getTaskList().put(task, task.getDuration());
+    }
 
-    private int CalcAllModuleTimeInDays() {
-        return 0;
+    private long CalcAllModuleTimeInDays() {
+        return Duration.between(start.atStartOfDay(), end.atStartOfDay()).toDays();
     }
 
     private int calcAllTaskDays() {
-        return 0;
+        int sum = 0;
+        for (Map.Entry<Task, Integer> task : taskList.entrySet()) {
+            sum += task.getValue();
+        }
+        return sum;
     }
 
-    public void addTask(Task task) {
-
-    }
 
     public void printTasks() {
-
+        System.out.println("All Tasks in this Module:");
+        for (Map.Entry<Task, Integer> task : taskList.entrySet()) {
+            System.out.println("\t-" + task.getKey() + "\n");
+        }
     }
 
     @Override
     public String toString(){
-        return "";
+        return getId() + ", Name: " + getName() + ", Module-Time: " + getStart() + " - " + getEnd();
     }
 
-
-    private boolean hasLicense(Trainer trainer) {
-        return false;
-    }
-
-    public boolean trainerIsFree(Trainer trainer) {
-        return false;
+    public void printTrainerForThisModule() {
+        System.out.println("Trainer for Module " + toString());
+        if (getTrainer() == null) { 
+            System.out.println("Trainer dosn't exist");
+        } else if (getAssistent() == null) {
+            System.out.println("Assistent dosn't exist");
+        } else {
+        System.out.println("\t-Trainer: " + getTrainer().getFirstname() + " " + getTrainer().getLastname() + "\n\t-Assist" + getAssistent().getFirstname() + " " + getAssistent().getLastname());
+        }
     }
 }
+
