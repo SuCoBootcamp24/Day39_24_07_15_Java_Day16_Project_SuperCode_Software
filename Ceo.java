@@ -7,7 +7,7 @@ public class Ceo extends Person{
     private LocalDate inCompany;
 
     public Ceo(String firstname, String lastname, LocalDate birthday, String address, String email, LocalDate inCompany, EducationalCompany educationalCompany) {
-        super(lastname, firstname, birthday, address, email);
+        super(firstname, lastname, birthday, address, email);
         addCampany(educationalCompany);
         setInCompany(inCompany);
 

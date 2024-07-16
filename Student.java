@@ -8,8 +8,8 @@ public class Student extends Person {
 
     // - constructor
 
-    public Student(String lastname, String firstname, LocalDate birthday, String address, String email, String desiredCourse) {
-        super(lastname, firstname, birthday, address, email);
+    public Student(String firstname, String lastname, LocalDate birthday, String address, String email, String desiredCourse) {
+        super(firstname, lastname, birthday, address, email);
         this.desiredCourse = desiredCourse;
     }
 

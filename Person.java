@@ -10,9 +10,9 @@ public class Person {
     private String email;
     private LocalDate birthday;
 
-    public Person(String lastname, String firstname, LocalDate birthday, String address, String email) {
-        this.lastname = lastname;
+    public Person(String firstname, String lastname, LocalDate birthday, String address, String email) {
         this.firstname = firstname;
+        this.lastname = lastname;
         this.birthday = birthday;
         this.ID = lastID + 1;
         Person.lastID++;

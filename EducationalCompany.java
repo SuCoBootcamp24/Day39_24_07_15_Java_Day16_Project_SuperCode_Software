@@ -135,20 +135,50 @@ public class EducationalCompany {
     }
 
     public void addTrainerToCourse(Course course) {
-        for (int i = 0; i < course.getModules().size(); i++) {
-            Module courseModule = course.getModules().get(i);
-            if (courseModule.getTrainer() != null) {
+
+        for (Module courseModule : course.getModules()) {
+
+            if (courseModule.getTrainer() == null) {
+                boolean trainerAssigned = false;
                 for (Trainer t : trainerList) {
-                    if (t.hasLicense(courseModule)) {
-                        if (t.TrainerIsFree(courseModule)) {
-                            courseModule.setTrainer(t);
-                            System.out.println("added " + courseModule.getName());
-                        } else System.out.println("Zeit passt nicht " + courseModule.getName());
-                    } else System.out.println("keine lizenz " + courseModule.getName());
+
+                    if (t.hasLicense(courseModule.getRequiredLicense()) && t.TrainerIsFree(courseModule)) {
+
+                        courseModule.setTrainer(t);
+                        System.out.println("Trainer " + t.getFirstname() + " " + t.getLastname() + " assigned to module " + courseModule.getName() + " in Course " + course.getName());
+                        trainerAssigned = true;
+                        break; // exit the loop once a trainer is assigned
+                    }
+                }
+                if (!trainerAssigned) {
+                    System.out.println("No available trainers for module " + courseModule.getName() + " in Course" + course.getName());
                 }
             }
         }
     }
+
+    public void addAssistTrainerToCourse(Course course) {
+
+            for (Module courseModule : course.getModules()) {
+
+                if (courseModule.getAssistent() == null) {
+                    boolean assistTrainerAssigned = false;
+                    for (Trainer t : trainerList) {
+
+                        if (t.hasLicense("ASSIST") && t.TrainerIsFree(courseModule)) {
+
+                            courseModule.setAssistent(t);
+                            System.out.println("Assistant " + t.getFirstname() + " " + t.getLastname() + " assigned to module " + courseModule.getName() + " in Course " + course.getName());
+                            assistTrainerAssigned = true;
+                            break; // exit the loop once a trainer is assigned
+                        }
+                    }
+                    if (!assistTrainerAssigned) {
+                        System.out.println("No available Assistant for module " + courseModule.getName() + " in Course" + course.getName());
+                    }
+                }
+            }
+        }
 
 
     public int CaddStudentToCourse(Course course) {

@@ -6,8 +6,8 @@ public class Trainer extends Person {
     private LocalDate inCompanySice;
     private ArrayList<Module> modulList = new ArrayList<>();
 
-    public Trainer(String lastname, String firstname, LocalDate birthday, String address, String email, LocalDate inCompanySince) {
-        super(lastname, firstname, birthday, address, email);
+    public Trainer(String firstname, String lastname, LocalDate birthday, String address, String email, LocalDate inCompanySince) {
+        super(firstname, lastname, birthday, address, email);
         this.inCompanySice = inCompanySince;
         this.licenses = new ArrayList<>();
     }
@@ -38,8 +38,8 @@ public class Trainer extends Person {
         if(!getLicenses().contains(license)) licenses.add(license);
     }
 
-    public boolean hasLicense(Module module) {
-        if (getLicenses().contains(module.getRequiredLicense())) {
+    public boolean hasLicense(String license) {
+        if (getLicenses().contains(license)) {
             return true;
         }
         return false;
