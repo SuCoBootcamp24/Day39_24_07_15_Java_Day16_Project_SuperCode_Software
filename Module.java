@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Module {
     
-    private static long lastId = 0;
+    private static long lastId = 1;
 
     private long id;
     private String name;
@@ -139,6 +139,11 @@ public class Module {
         } else {
         System.out.println("\t-Trainer: " + getTrainer().getFirstname() + " " + getTrainer().getLastname() + "\n\t-Assist" + getAssistent().getFirstname() + " " + getAssistent().getLastname());
         }
+    }
+
+    public boolean verifyModuleTasks() {
+        System.out.println(calcAllTaskDays() >= CalcAllModuleTimeInDays());
+        return calcAllTaskDays() >= CalcAllModuleTimeInDays();
     }
 }
 
