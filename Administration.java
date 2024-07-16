@@ -34,12 +34,15 @@ public class Administration {
         LocalDate start1 = LocalDate.of(2024, 01, 01);
         LocalDate end1 = LocalDate.of(2024, 03, 01);
         LocalDate start2 = LocalDate.of(2024, 04, 02);
-        LocalDate end2 = LocalDate.of(2024, 04, 01);
+        LocalDate end2 = LocalDate.of(2024, 04, 07);
 
         Module module1 = new Module("module1", start1, end1, "JAVA");
         Module module2 = new Module("module2", start2, end2, "HTML");
         for (int i = 0; i < Duration.between(module1.getStart().atStartOfDay(), module1.getEnd().atStartOfDay()).toDays(); i++) {
             module1.addTaskToList(new Task("null", "null", 1));
+        }
+        for (int i = 0; i < Duration.between(module2.getStart().atStartOfDay(), module2.getEnd().atStartOfDay()).toDays(); i++) {
+            module2.addTaskToList(new Task("null", "null", 1));
         }
 
         // System.out.println(module1);

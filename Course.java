@@ -56,13 +56,12 @@ public class Course {
 
     public void addModule(Module module) {
         boolean weHaveEnoughTasks = module.verifyModuleTasks();
-        // boolean weHaveEnoughTasks = true;
         boolean fitsWithModulesTime = verifyModuleTime(module);
         if (weHaveEnoughTasks && fitsWithModulesTime)
             modules.add(module);
         else if (!weHaveEnoughTasks && fitsWithModulesTime)
-            System.out.println("Module not added - Not enough tasks");
-        else System.out.println("Module not added - Time is overlapping");
+            System.out.println("Module " + module.getId() + " not added - Not enough tasks");
+        else System.out.println("Module " + module.getId() + " not added - Time is overlapping");
     }
 
     private boolean verifyModuleTime(Module module) {
@@ -81,6 +80,8 @@ public class Course {
     }
 
     public void addStudent(Student student) {
+        if (students.contains(student))
+            throw new IllegalStateException("Student already enrolled in the course");
         students.add(student);
     }
 

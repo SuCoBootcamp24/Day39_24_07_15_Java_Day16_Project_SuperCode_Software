@@ -19,52 +19,63 @@ public class Module {
 
     public Module(String name, LocalDate start, LocalDate end, String requiredLicense) {
         setName(name);
-        setStart(start);
-        setEnd(end);
+        setStartUndEnd(start, end);
+        // setStart(start);
+        // setEnd(end);
         setRequiredLicense(requiredLicense);
         this.id = lastId++;
     }
 
-     //----getter() / setter()---
+    
+    //----getter() / setter()---
     public long getId() {
         return id;
     }
-
-
+    
+    
     //----
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
- 
-
+    
+    
     //----
     public HashMap<Task, Integer> getTaskList() {
         return taskList;
     }
-
+    
     public void setTaskList(HashMap<Task, Integer> taskList) {
         this.taskList = taskList;
     }
-
+    
     //----
-
+    
     public String getRequiredLicense() {
         return requiredLicense;
     }
-
+    
     public void setRequiredLicense(String requiredLicense) {
         this.requiredLicense = requiredLicense;
     }
-
+    
     //----
+
+    private void setStartUndEnd(LocalDate start, LocalDate end) {
+        if (start.isBefore(end)) {
+            setStart(start);
+            setEnd(end);
+        } else
+            throw new IllegalArgumentException("Starting Date is after end Date.");
+    }
+    
     public LocalDate getStart() {
         return start;
     }
-
+    
     public void setStart(LocalDate start) {
         this.start = start;
     }
@@ -105,14 +116,14 @@ public class Module {
         if(!getTaskList().containsKey(task)) getTaskList().put(task, task.getDuration());
     }
 
-    private long CalcAllModuleTimeInDays() {
+    private long calcAllModuleTimeInDays() {
         return Duration.between(start.atStartOfDay(), end.atStartOfDay()).toDays();
     }
 
     private int calcAllTaskDays() {
         int sum = 0;
-        for (Map.Entry<Task, Integer> task : taskList.entrySet()) {
-            sum += task.getValue();
+        for (Integer duration : taskList.values()) {
+            sum += duration;
         }
         return sum;
     }
@@ -142,8 +153,7 @@ public class Module {
     }
 
     public boolean verifyModuleTasks() {
-        System.out.println(calcAllTaskDays() >= CalcAllModuleTimeInDays());
-        return calcAllTaskDays() >= CalcAllModuleTimeInDays();
+        return calcAllTaskDays() >= calcAllModuleTimeInDays();
     }
 }
 
