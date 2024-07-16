@@ -98,6 +98,7 @@ public class Module {
 
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
+        trainer.addModuleToList(this);
     }
 
    //----

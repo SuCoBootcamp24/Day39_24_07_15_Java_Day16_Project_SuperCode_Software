@@ -42,6 +42,7 @@ public class Course {
         return endingDate;
     }
     
+
     public ArrayList<Module> getModules() {
         return modules;
     }
@@ -122,5 +123,10 @@ public class Course {
         return ID + ", " + name + ", Course-time: " + startingDate + " - " + endingDate;
     }
 
+    public void showAllTrainersInAllModules() {
+        for (Module module : modules) {
+            module.printTrainerForThisModule();
+        }
+    }
     
 }
