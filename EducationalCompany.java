@@ -132,13 +132,5 @@ public class EducationalCompany {
     }
 
 
-    // private boolean hasLicense(Trainer trainer) {
-    //     if (trainer.getLicenses().contains(getRequiredLicense())) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
-
 
 }
