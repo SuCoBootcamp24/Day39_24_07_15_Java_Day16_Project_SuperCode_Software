@@ -62,4 +62,8 @@ public class Student extends Person {
         }
         return message;
     }
+
+    public boolean desireTheCourse(Course course) {
+        return course.getName().toUpperCase().contains(this.getDesiredCourse().toUpperCase());
+    }
 }

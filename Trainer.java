@@ -60,6 +60,7 @@ public class Trainer extends Person {
         return "Trainer " + getID() + " " +
                 getFirstname() + " " + getLastname() + ": " +
                 "DOB: " + getBirthday() +
-                " Licenses: " + licenses.toString();
+                " Licenses: " + licenses.toString() +
+                " Number Modules : " + modulList.size();
     }
 }

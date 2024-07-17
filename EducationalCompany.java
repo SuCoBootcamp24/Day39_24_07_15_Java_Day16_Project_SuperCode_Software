@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class EducationalCompany {
 
@@ -135,7 +137,7 @@ public class EducationalCompany {
     }
 
     public void addTrainerToCourse(Course course) {
-
+        sortTrainersList();
         for (Module courseModule : course.getModules()) {
 
             if (courseModule.getTrainer() == null) {
@@ -158,7 +160,7 @@ public class EducationalCompany {
     }
 
     public void addAssistTrainerToCourse(Course course) {
-
+            sortTrainersList();
             for (Module courseModule : course.getModules()) {
 
                 if (courseModule.getAssistent() == null) {
@@ -181,8 +183,34 @@ public class EducationalCompany {
         }
 
 
-    public int CaddStudentToCourse(Course course) {
-        return 0;
+    public void addStudentToCourse(Course course) {
+        int remainingSeats = 0;
+        for (Student student : studentList) {
+            boolean isAlreadyEnrolled = student.getHisCourse() != null;
+            if (!isAlreadyEnrolled) {
+
+                if (student.desireTheCourse(course)) {
+                    if (!course.isAlreadyFull()) {
+                        course.addStudent(student);
+                        System.out.println("Student " + student.getFirstname() + " " + student.getLastname() + " added" + " to Course " + course.getName());
+                    } else {
+                        System.out.println("Student " + student.getFirstname() + " " + student.getLastname() + "not added" + " to Course " + course.getName() + " - course is already overbooked");
+                        remainingSeats++;
+                    }
+                }
+            }
+
+        }
+        System.out.println("Remaining Student to locate in Courses are: " + remainingSeats);
+
+    }
+
+    public void sortTrainersList() {
+        trainerList.sort(new Comparator<Trainer>() {
+            public int compare(Trainer t1, Trainer t2) {
+                return Integer.compare(t1.getModulList().size(), t2.getModulList().size());
+            }
+        });
     }
 
 }

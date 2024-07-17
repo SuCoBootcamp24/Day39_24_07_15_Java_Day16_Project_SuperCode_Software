@@ -128,5 +128,8 @@ public class Course {
             module.printTrainerForThisModule();
         }
     }
-    
+
+    public boolean isAlreadyFull() {
+        return students.size() == MAX_STUDENT;
+    }
 }

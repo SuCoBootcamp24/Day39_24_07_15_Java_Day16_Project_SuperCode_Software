@@ -43,7 +43,7 @@ public class Administration {
         trainer6.addLicenseToList("ASSIST");
 
         //------Student erstellen ----
-        Student student1 = new Student("s1","1", birthday,"adrese","abs@abc.de", "JAVA");
+        Student student1 = new Student("s1","1", birthday,"adrese","abs@abc.de", "java");
         Student student2 = new Student("s2","1", birthday,"adrese","abs@abc.de", "JAVA");
         Student student3 = new Student("s3","1", birthday,"adrese","abs@abc.de", "JAVA");
         Student student4 = new Student("s4","1", birthday,"adrese","abs@abc.de", "JAVA");
@@ -51,7 +51,7 @@ public class Administration {
         Student student6 = new Student("s6","1", birthday,"adrese","abs@abc.de", "JAVA");
         Student student7 = new Student("s7","1", birthday,"adrese","abs@abc.de", "JAVA");
         Student student8 = new Student("s8","1", birthday,"adrese","abs@abc.de", "JAVA");
-        Student student9 = new Student("s9","1", birthday,"adrese","abs@abc.de", "HTML");
+        Student student9 = new Student("s9","1", birthday,"adrese","abs@abc.de", "java");
         Student student10 = new Student("s10","1", birthday,"adrese","abs@abc.de", "HTML");
         Student student11 = new Student("s11","1", birthday,"adrese","abs@abc.de", "HTML");
         Student student12 = new Student("s12","1", birthday,"adrese","abs@abc.de", "HTML");
@@ -149,5 +149,11 @@ public class Administration {
         company1.addAssistTrainerToCourse(course1);
 
         course1.showAllTrainersInAllModules();
+
+        company1.addStudentToCourse(course1);
+        company1.addStudentToCourse(course2);
+
+        company1.sortTrainersList();
+        company1.printTrainer();
     }
 }
