@@ -249,4 +249,22 @@ public class EducationalCompany {
             }
         }
     }
+
+    public void bestReviewedCourse() {
+        if (courseList.isEmpty()) {
+            System.out.println("There are currently no courses");
+            return;
+        }
+        double bestRevie = 0;
+        Course bestCourse = courseList.getFirst();
+        for (Course course : courseList) {
+            if (course.getFeedbackBox().isEmpty()) continue;
+            double review = course.getReviewAverage();
+            if (review > bestRevie) {
+                bestRevie = review;
+                bestCourse = course;
+            }
+        }
+        System.out.println("Best reviewd course is Course: " + bestCourse.getName() + " with a review rate of: " + bestCourse.getReviewAverage());
+    }
 }

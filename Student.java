@@ -66,4 +66,9 @@ public class Student extends Person {
     public boolean desireTheCourse(Course course) {
         return course.getName().toUpperCase().contains(this.getDesiredCourse().toUpperCase());
     }
+
+    public void addFeedback(Course course, String s, double review) {
+        if (this.hisCourse == course) course.addFeedbackForCourse(this, s + " " + review);
+        else System.out.printf("Student %s %s was not in course %s. It's not possible to add a feedback.%n", getFirstname(), getLastname(), course.getName());
+    }
 }

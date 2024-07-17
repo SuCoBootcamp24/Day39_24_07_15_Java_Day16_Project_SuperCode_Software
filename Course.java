@@ -14,8 +14,8 @@ public class Course {
     private LocalDate endingDate;
     private ArrayList<Module> modules;
     private ArrayList<Student> students;
+    private HashMap<Student, HashMap<String, Double>> feedbackBox;
 
-    private HashMap<String, Double> feedbackBox;
     private final int MAX_STUDENT = 8;
 
     public Course(String name, LocalDate startingDate, LocalDate endingDate) {
@@ -65,7 +65,11 @@ public class Course {
     }
 
     public void addFeedbackForCourse(String text, double note) {
-
+        if (endingDate.isAfter(LocalDate.now()) || endingDate.isEqual(LocalDate.now())) System.out.println("Course " + this.name + " is not finished yet, you cannot give a feedback before the end!");
+        else if (note<1 || note>5) System.out.println("Note must be between 1 and 5");
+        else {
+            feedbackBox.put(text, note);
+        }
     }
 
     public int getMAX_STUDENT() {
@@ -158,10 +162,6 @@ public class Course {
                 count++;
             }
         }
-
-
-
-
         return ((double) count / students.size()) * 100;
     }
 
@@ -176,7 +176,6 @@ public class Course {
                 count++;
             }
         }
-
         return ((double) count / students.size()) * 100;
     }
 
@@ -184,5 +183,14 @@ public class Course {
         double rate = jobPlacementRate();
         if (rate == -1) System.out.println("Course " + getName() + " is not over yet");
         else System.out.println("Job placement rate Course " + getName() + " is: " + jobPlacementRate() + "%");
+    }
+
+    public double getReviewAverage() {
+        if (feedbackBox.isEmpty()) return -1;
+        double sum = 0;
+        for (double note : feedbackBox.values()) {
+            sum += note;
+        }
+        return sum / feedbackBox.size();
     }
 }

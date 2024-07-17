@@ -178,7 +178,16 @@ public class Administration {
         course2.printJobPlacementRate();
 
         // # Bewertung des Kurses von den Absolventen
+        System.out.println();
 
+        student1.addFeedback(course1, "The course has changed my life", 5);
+        student1.addFeedback(course1, "The course has changed my life", 5);
+        student1.addFeedback(course1, "The course has changed my life", 5);
+        student1.addFeedback(course1, "The course has changed my life", 5);
+        student1.addFeedback(course1, "The course has changed my life", 5);
 
+        student1.addFeedback(course2, "The course was very useful", 4);
+
+        company1.bestReviewedCourse();
     }
 }
