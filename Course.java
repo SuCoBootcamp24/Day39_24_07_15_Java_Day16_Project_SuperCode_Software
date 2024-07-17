@@ -3,6 +3,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Course {
@@ -13,6 +14,8 @@ public class Course {
     private LocalDate endingDate;
     private ArrayList<Module> modules;
     private ArrayList<Student> students;
+
+    private HashMap<String, Double> feedbackBox;
     private final int MAX_STUDENT = 8;
 
     public Course(String name, LocalDate startingDate, LocalDate endingDate) {
@@ -23,6 +26,7 @@ public class Course {
         lastID++;
         this.modules = new ArrayList<>();
         this.students = new ArrayList<>();
+        this.feedbackBox = new HashMap<>();
     }
     
     // - getter setter
@@ -51,7 +55,19 @@ public class Course {
     public ArrayList<Student> getStudents() {
         return students;
     }
-    
+
+    public HashMap<String, Double> getFeedbackBox() {
+        return feedbackBox;
+    }
+
+    public void setFeedbackBox(HashMap<String, Double> feedbackBox) {
+        this.feedbackBox = feedbackBox;
+    }
+
+    public void addFeedbackForCourse(String text, double note) {
+
+    }
+
     public int getMAX_STUDENT() {
         return MAX_STUDENT;
     }

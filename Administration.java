@@ -177,6 +177,8 @@ public class Administration {
         System.out.println();
         course2.printJobPlacementRate();
 
+        // # Bewertung des Kurses von den Absolventen
+
 
     }
 }
