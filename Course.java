@@ -65,9 +65,9 @@ public class Course {
             if (weHaveEnoughTasks && fitsWithModulesTime)
               modules.add(module);
             else if (!weHaveEnoughTasks && fitsWithModulesTime)
-                System.out.println("Module " + module.getId() + " not added - Not enough tasks");
-            else System.out.println("Module " + module.getId() + " not added - Time is overlapping");
-        } else System.out.println("Module " + module.getId() + " is out of Corse - Module not added!");
+                System.out.println("Module " + module.getId() + " not added to course " + this.name + " - Not enough tasks");
+            else System.out.println("Module " + module.getId() + " not added to course " + this.name + " - Time is overlapping");
+        } else System.out.println("Module " + module.getId() + " is out of Corse - Module not added to course " + this.name + "!");
         }
 
     private boolean verifyModuleTime(Module module) {
