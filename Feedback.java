@@ -1,47 +1,47 @@
 public class Feedback {
 
-    private Student key;
-    private String value1;
-    private Double value2;
+    private Student student;
+    private String message;
+    private Double note;
 
 
 
 
     public Feedback(Student student, String text, double note) {
-        setKey(student);
-        setValue1(text);
-        setValue2(note);
+        setStudent(student);
+        setMessage(text);
+        setNote(note);
     }
 
-    public Student getKey() {
-        return key;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setKey(Student key) {
-        this.key = key;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public String getValue1() {
-        return value1;
+    public String getMessage() {
+        return message;
     }
 
-    public void setValue1(String value1) {
-        this.value1 = value1;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public Double getValue2() {
-        return value2;
+    public Double getNote() {
+        return note;
     }
 
-    public void setValue2(Double value2) {
-        this.value2 = value2;
+    public void setNote(Double note) {
+        this.note = note;
     }
 
     @Override
     public String toString() {
-        return "{" + key +
-                ", " + value1 +
-                ", " + value2 +
+        return "{" + student +
+                ", " + message +
+                ", " + note +
                 '}';
     }
 }

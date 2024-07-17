@@ -2,7 +2,6 @@
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class Course {
@@ -69,7 +68,7 @@ public class Course {
         else if (note<1 || note>5) System.out.println("Note must be between 1 and 5");
         else {
             for (Feedback f : feedbackBox) {
-                if (f.getKey().equals(student)) {
+                if (f.getStudent().equals(student)) {
                     System.out.println("Student " + student.getFirstname() + " " + student.getLastname() + " already has a feedback for this course!");
                     return;
                 }
@@ -119,7 +118,7 @@ public class Course {
         if (students.contains(student))
             throw new IllegalStateException("Student already enrolled in the course");
         students.add(student);
-        student.setCourse(this);
+        student.setHisCourse(this);
     }
 
     public void removeStudent(Student student) {
@@ -195,7 +194,7 @@ public class Course {
         if (feedbackBox.isEmpty()) return -1;
         double sum = 0;
         for (Feedback feedback : feedbackBox) {
-            sum += feedback.getValue2();
+            sum += feedback.getNote();
         }
         return sum / feedbackBox.size();
     }

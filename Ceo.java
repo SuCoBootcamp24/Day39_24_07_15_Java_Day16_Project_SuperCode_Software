@@ -8,7 +8,7 @@ public class Ceo extends Person{
 
     public Ceo(String firstname, String lastname, LocalDate birthday, String address, String email, LocalDate inCompany, EducationalCompany educationalCompany) {
         super(firstname, lastname, birthday, address, email);
-        addCampany(educationalCompany);
+        addCompany(educationalCompany);
         setInCompany(inCompany);
 
     }
@@ -18,7 +18,7 @@ public class Ceo extends Person{
         return companyList;
     }
 
-    public void addCampany(EducationalCompany company) {
+    public void addCompany(EducationalCompany company) {
         if (company == null) throw new IllegalArgumentException("String of new company is Empty.");
         if (!this.companyList.contains(company))this.companyList.add(company);
     }

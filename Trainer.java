@@ -12,25 +12,27 @@ public class Trainer extends Person {
         this.licenses = new ArrayList<>();
     }
 
+    // getters and setters()
     public ArrayList<String> getLicenses() {
         return licenses;
     }
 
+    //---
     public LocalDate getInCompanySice() {
         return inCompanySice;
     }
 
+    //---
     public ArrayList<Module> getModulList() {
         return modulList;
     }
 
+
+    //-----other----
     public void addModuleToList(Module module) {
         if(!modulList.contains(module)) modulList.add(module);
     }
 
-    public void setModulList(ArrayList<Module> modulList) {
-        this.modulList = modulList;
-    }
 
     public void addLicenseToList(String license) {
         if (license.isEmpty())

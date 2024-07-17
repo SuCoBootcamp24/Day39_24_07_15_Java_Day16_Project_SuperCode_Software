@@ -3,8 +3,8 @@ import java.time.LocalDate;
 
 public class Student extends Person {
     private Course hisCourse;
-    private String desiredCourse;
     private LocalDate jobBegin;
+    private String desiredCourse;
 
     // - constructor
 
@@ -29,8 +29,12 @@ public class Student extends Person {
 
     // - setter
 
-    public void setCourse(Course course) {
+    public void setHisCourse(Course course) {
         this.hisCourse = course;
+    }
+
+    public void setDesiredCourse(String desiredCourse) {
+        this.desiredCourse = desiredCourse;
     }
 
     public void setJobBegin (LocalDate jobBegin) {
@@ -46,10 +50,6 @@ public class Student extends Person {
         }
         Duration duration = Duration.between(hisCourse.getEndingDate().atStartOfDay(), jobBegin.atStartOfDay());
         return (int) duration.toDays();
-    }
-
-    public void addJobBegin(LocalDate jobBeginDate) {
-        this.jobBegin = jobBeginDate;
     }
 
     @Override
