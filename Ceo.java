@@ -37,15 +37,15 @@ public class Ceo extends Person{
 
     @Override
     public String toString() {
-        String message = "Ceo: " + getFirstname() + " " + getLastname() + "\n" +
-                        "Birthday: " + getBirthday() +
-                        "Ceo since:: " + getInCompany() + "\nCompanys:\n";
+        StringBuilder message = new StringBuilder("Ceo: " + getFirstname() + " " + getLastname() + "\n" +
+                "Birthday: " + getBirthday() +
+                "Ceo since:: " + getInCompany() + "\nCompanys:\n");
 
         for (EducationalCompany e : companyList) {
-            if (e != null) message += "\t" + e.getName() + "\n";
+            if (e != null) message.append("\t").append(e.getName()).append("\n");
         }
 
-        return message;
+        return message.toString();
     }
 
     public void printCompanys() {

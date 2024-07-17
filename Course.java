@@ -1,7 +1,6 @@
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,7 +13,7 @@ public class Course {
     private LocalDate endingDate;
     private ArrayList<Module> modules;
     private ArrayList<Student> students;
-    private HashMap<Student, HashMap<String, Double>> feedbackBox;
+    private ArrayList<Feedback> feedbackBox;
 
     private final int MAX_STUDENT = 8;
 
@@ -26,7 +25,8 @@ public class Course {
         lastID++;
         this.modules = new ArrayList<>();
         this.students = new ArrayList<>();
-        this.feedbackBox = new HashMap<>();
+        this.feedbackBox = new ArrayList<>();
+
     }
     
     // - getter setter
@@ -56,19 +56,19 @@ public class Course {
         return students;
     }
 
-    public HashMap<String, Double> getFeedbackBox() {
+    public ArrayList<Feedback> getFeedbackBox() {
         return feedbackBox;
     }
 
-    public void setFeedbackBox(HashMap<String, Double> feedbackBox) {
+    public void setFeedbackBox(ArrayList<Feedback> feedbackBox) {
         this.feedbackBox = feedbackBox;
     }
 
-    public void addFeedbackForCourse(String text, double note) {
+    public void addFeedbackForCourse(Student student, String text, double note) {
         if (endingDate.isAfter(LocalDate.now()) || endingDate.isEqual(LocalDate.now())) System.out.println("Course " + this.name + " is not finished yet, you cannot give a feedback before the end!");
         else if (note<1 || note>5) System.out.println("Note must be between 1 and 5");
         else {
-            feedbackBox.put(text, note);
+            feedbackBox.add(new Feedback(student, text, note));
         }
     }
 
@@ -188,8 +188,8 @@ public class Course {
     public double getReviewAverage() {
         if (feedbackBox.isEmpty()) return -1;
         double sum = 0;
-        for (double note : feedbackBox.values()) {
-            sum += note;
+        for (Feedback feedback : feedbackBox) {
+            sum += feedback.getValue2();
         }
         return sum / feedbackBox.size();
     }

@@ -4,9 +4,10 @@ import java.util.Comparator;
 
 public class EducationalCompany {
 
+    private final LocalDate FOUNDING_DATE;
+
     private Ceo ceo;
     private String name;
-    private LocalDate foundingDate;
     private String category;
     private ArrayList<Trainer> trainerList = new ArrayList<>();
     private ArrayList<Student> studentList = new ArrayList<>();
@@ -14,9 +15,9 @@ public class EducationalCompany {
 
 
 
-    public EducationalCompany(String name, LocalDate foundingDate, String category) {
+    public EducationalCompany(String name, LocalDate FOUNDING_DATE, String category) {
         setName(name);
-        this.foundingDate = foundingDate;
+        this.FOUNDING_DATE = FOUNDING_DATE;
         setCategory(category);
     }
     
@@ -42,8 +43,8 @@ public class EducationalCompany {
 
 
     //---
-    public LocalDate getFoundingDate() {
-        return foundingDate;
+    public LocalDate getFOUNDING_DATE() {
+        return FOUNDING_DATE;
     }
 
 
@@ -132,7 +133,7 @@ public class EducationalCompany {
 
     @Override
     public String toString(){
-        return getName() + ", Category: " + getCategory() + ", Founding Date: " + getFoundingDate();
+        return getName() + ", Category: " + getCategory() + ", Founding Date: " + getFOUNDING_DATE();
     }
 
     public void addTrainerToCourse(Course course) {
