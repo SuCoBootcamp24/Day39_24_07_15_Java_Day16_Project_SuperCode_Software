@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class EducationalCompany {
@@ -126,7 +125,7 @@ public class EducationalCompany {
         if(courseList == null) System.out.println(" Courses not added");
         else {
             for (Course c : courseList) {
-                System.out.println("\t" + c);
+                System.out.println("\t" + c + " rate: " + c.jobPlacementRate());
             }
         }
     }
@@ -205,7 +204,7 @@ public class EducationalCompany {
 
     }
 
-    public void sortTrainersList() {
+    private void sortTrainersList() {
         trainerList.sort(new Comparator<Trainer>() {
             public int compare(Trainer t1, Trainer t2) {
                 return Integer.compare(t1.getModulList().size(), t2.getModulList().size());
@@ -213,4 +212,41 @@ public class EducationalCompany {
         });
     }
 
+    public void bestCourseWithJobPlacementRate() {
+        courseList.sort((new Comparator<Course>() {
+            @Override
+            public int compare(Course c1, Course c2) {
+                return Double.compare(c1.jobPlacementRate(), c2.jobPlacementRate());
+            }
+        }));
+        bestCourseLogicHelper();
+    }
+
+    public void bestCourseWithJobPlacementRateAfterNDays(int days) {
+        courseList.sort((new Comparator<Course>() {
+            @Override
+            public int compare(Course c1, Course c2) {
+                return Double.compare(c1.jobPlacementRate(days), c2.jobPlacementRate(days));
+            }
+        }));
+
+        bestCourseLogicHelper();
+    }
+
+    private void bestCourseLogicHelper() {
+        if (courseList.getLast().jobPlacementRate() == -1) System.out.println("There is currently no completed course");
+        else System.out.println("Best Course: " + courseList.getLast() + " with " + courseList.getLast().jobPlacementRate() + "%" );
+
+
+        for (int i = 0; i < courseList.size(); i++) {
+            if (courseList.get(i).jobPlacementRate() == -1) continue;
+            else {
+                if (i == courseList.size() -1 ) break;
+                else {
+                    System.out.println("Worse Course: " + courseList.get(i) + " with " + courseList.get(i).jobPlacementRate() + "%");
+                    break;
+                }
+            }
+        }
+    }
 }

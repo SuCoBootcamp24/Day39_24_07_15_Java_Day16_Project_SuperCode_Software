@@ -23,13 +23,13 @@ public class Administration {
 
         // ------Personen erstellen------
         // ------Trainer erstellen----
-        Trainer trainer1 = new Trainer("1","1", birthday,"adrese","abs@abc.de", inCompanyDate);
-        Trainer trainer2 = new Trainer("2","1", birthday,"adrese","abs@abc.de", inCompanyDate);
-        Trainer trainer3 = new Trainer("3","1", birthday,"adrese","abs@abc.de", inCompanyDate);
-        Trainer trainer4 = new Trainer("4","1", birthday,"adrese","abs@abc.de", inCompanyDate);
-        Trainer trainer5 = new Trainer("5","1", birthday,"adrese","abs@abc.de", inCompanyDate);
-        Trainer trainer6 = new Trainer("6","1", birthday,"adrese","abs@abc.de", inCompanyDate);
-        Trainer trainer7 = new Trainer("7","1", birthday,"adrese","abs@abc.de", inCompanyDate);
+        Trainer trainer1 = new Trainer("1","1", birthday,"adress","abs@abc.de", inCompanyDate);
+        Trainer trainer2 = new Trainer("2","1", birthday,"adress","abs@abc.de", inCompanyDate);
+        Trainer trainer3 = new Trainer("3","1", birthday,"adress","abs@abc.de", inCompanyDate);
+        Trainer trainer4 = new Trainer("4","1", birthday,"adress","abs@abc.de", inCompanyDate);
+        Trainer trainer5 = new Trainer("5","1", birthday,"adress","abs@abc.de", inCompanyDate);
+        Trainer trainer6 = new Trainer("6","1", birthday,"adress","abs@abc.de", inCompanyDate);
+        Trainer trainer7 = new Trainer("7","1", birthday,"adress","abs@abc.de", inCompanyDate);
 
 
         // -----Trainer erhalten Lizenzen-----
@@ -134,6 +134,10 @@ public class Administration {
         course2.addModule(module5);
         course2.addModule(module6);
 
+        // -----Kurs in das Unternehmen speichern-------
+        company1.addCourse(course1);
+        company1.addCourse(course2);
+
         // ------Alle Module im Kurs1 anzeigenlassen------
         course1.showAllTrainersInAllModules();
         System.out.println();
@@ -148,12 +152,31 @@ public class Administration {
         // ------Assisttrainer zu dem Kurs hinzufuegen------
         company1.addAssistTrainerToCourse(course1);
 
+        // -----Alle Trainer im Kurs anzeigen-----
         course1.showAllTrainersInAllModules();
 
+        // -----Teilnehmer in die gewuenschen Kurse verteilen----
         company1.addStudentToCourse(course1);
         company1.addStudentToCourse(course2);
 
-        company1.sortTrainersList();
-        company1.printTrainer();
+
+        // ----Teilnehmer 1 hat nach dem Kursende HEUTE ein neuen Job gefunden-----
+        student1.setJobBegin(LocalDate.now());
+
+
+        // ------- STATISTIK---------
+        // # Jobvermittlungsquote
+            // Bester / Schlechtester Kurs bis heute
+        company1.bestCourseWithJobPlacementRate();
+        System.out.println();
+            // Bester / Schlechtester Kurs bis n Tage nach ende des Kurs
+        company1.bestCourseWithJobPlacementRateAfterNDays(10);
+
+            // Jobvermittlungsquote eines Kurses
+        course1.printJobPlacementRate();
+        System.out.println();
+        course2.printJobPlacementRate();
+
+
     }
 }

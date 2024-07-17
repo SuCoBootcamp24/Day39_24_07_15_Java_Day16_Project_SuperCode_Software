@@ -1,6 +1,7 @@
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -131,5 +132,41 @@ public class Course {
 
     public boolean isAlreadyFull() {
         return students.size() == MAX_STUDENT;
+    }
+
+    public double jobPlacementRate(){
+        if (!getEndingDate().isBefore(LocalDate.now())) return -1;
+        int count = 0;
+        for(Student s : students) {
+            if (s.getJobBegin() != null) {
+                count++;
+            }
+        }
+
+
+
+
+        return ((double) count / students.size()) * 100;
+    }
+
+    public double jobPlacementRate(int days){
+        LocalDate toDayToCheck = getEndingDate().plusDays(days);
+        if (!getEndingDate().isBefore(LocalDate.now())) return -1;
+
+        int count = 0;
+        for(Student s : students) {
+
+            if (s.getJobBegin() != null && (s.getJobBegin().isEqual(toDayToCheck) || s.getJobBegin().isBefore(toDayToCheck))) {
+                count++;
+            }
+        }
+
+        return ((double) count / students.size()) * 100;
+    }
+
+    public void printJobPlacementRate() {
+        double rate = jobPlacementRate();
+        if (rate == -1) System.out.println("Course " + getName() + " is not over yet");
+        else System.out.println("Job placement rate Course " + getName() + " is: " + jobPlacementRate() + "%");
     }
 }
