@@ -94,7 +94,7 @@ public class Administration {
 
         // ------Kurse erstellen------
         Course course1 = new Course("Java1", start1, end3);
-        Course course2 = new Course("HTML1", start2, end4);
+        Course course2 = new Course("HTML1", start2, end3);
 
         // ------Module inkl. Tasks (==) für den Kurse erstelle------
         Module module1 = new Module("GIT1", start1,end1, "GIT");
@@ -183,14 +183,18 @@ public class Administration {
         // # Bewertung des Kurses von den Absolventen
         System.out.println();
 
+        // Studenten bewerten den Kurs
         student1.addFeedback(course1, "The course has changed my life", 5);
-        student1.addFeedback(course1, "The course has changed my life", 5);
-        student1.addFeedback(course1, "The course has changed my life", 5);
-        student1.addFeedback(course1, "The course has changed my life", 5);
-        student1.addFeedback(course1, "The course has changed my life", 5);
+        student2.addFeedback(course1, "The course has changed my life", 4);
+        student3.addFeedback(course1, "The course has changed my life", 2);
+        student4.addFeedback(course1, "The course has changed my life", 5);
 
-        student1.addFeedback(course2, "The course was very useful", 4);
+        student10.addFeedback(course2, "The course has changed my life", 1);
+        student11.addFeedback(course2, "The course has changed my life", 1);
+        student12.addFeedback(course2, "The course has changed my life", 1);
+        student13.addFeedback(course2, "The course has changed my life", 1);
 
+        // Bewertungsergebnisse des Kurses
         company1.bestReviewedCourse();
     }
 }

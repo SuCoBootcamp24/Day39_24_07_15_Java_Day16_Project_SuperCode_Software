@@ -68,6 +68,12 @@ public class Course {
         if (endingDate.isAfter(LocalDate.now()) || endingDate.isEqual(LocalDate.now())) System.out.println("Course " + this.name + " is not finished yet, you cannot give a feedback before the end!");
         else if (note<1 || note>5) System.out.println("Note must be between 1 and 5");
         else {
+            for (Feedback f : feedbackBox) {
+                if (f.getKey().equals(student)) {
+                    System.out.println("Student " + student.getFirstname() + " " + student.getLastname() + " already has a feedback for this course!");
+                    return;
+                }
+            }
             feedbackBox.add(new Feedback(student, text, note));
         }
     }

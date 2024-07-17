@@ -256,6 +256,14 @@ public class EducationalCompany {
             System.out.println("There are currently no courses");
             return;
         }
+        Course bestCourse = getBestCourseByFeedback();
+        System.out.println("Best reviewd course is Course: " + bestCourse.getName() + " with a review rate of: " + bestCourse.getReviewAverage());
+
+        Course worseCourse = getWorseCourseByFeedback();
+        System.out.println("Worse reviewd course is Course: " + worseCourse.getName() + " with a review rate of: " + worseCourse.getReviewAverage());
+    }
+
+    private Course getBestCourseByFeedback() {
         double bestRevie = 0;
         Course bestCourse = courseList.getFirst();
         for (Course course : courseList) {
@@ -266,6 +274,20 @@ public class EducationalCompany {
                 bestCourse = course;
             }
         }
-        System.out.println("Best reviewd course is Course: " + bestCourse.getName() + " with a review rate of: " + bestCourse.getReviewAverage());
+        return bestCourse;
+    }
+
+    private Course getWorseCourseByFeedback() {
+        double worseRevie = 6;
+        Course worseCourse = courseList.getFirst();
+        for (Course course : courseList) {
+            if (course.getFeedbackBox().isEmpty()) continue;
+            double review = course.getReviewAverage();
+            if (review < worseRevie) {
+                worseRevie = review;
+                worseCourse = course;
+            }
+        }
+        return worseCourse;
     }
 }
