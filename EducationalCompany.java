@@ -180,6 +180,7 @@ public class EducationalCompany {
         sortTrainersList();
         for (Module courseModule : course.getModules()) {
 
+
             if (courseModule.getAssistant() == null) {
                 boolean assistTrainerAssigned = false;
                 for (Trainer t : trainerList) {
@@ -190,7 +191,10 @@ public class EducationalCompany {
                         System.out.println("Assistant " + t.getFirstname() + " " + t.getLastname() + " assigned to module " + courseModule.getName() + " in Course " + course.getName());
                         assistTrainerAssigned = true;
                         break; // exit the loop once a trainer is assigned
+
+                        }
                     }
+
                 }
                 if (!assistTrainerAssigned) {
                     System.out.println("No available Assistant for module " + courseModule.getName() + " in Course" + course.getName());
