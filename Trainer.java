@@ -56,7 +56,15 @@ public class Trainer extends Person {
         }
         return true;
     }
-    
+
+    public long getWorkingDaysInModulesAssigned() {
+        long workingDays = 0;
+        for (Module m : getModulList()) {
+            workingDays += m.calcAllModuleTimeInDays();
+        }
+        return workingDays;
+    }
+
     @Override
     public String toString() {
         return "Trainer " + getID() + " " +

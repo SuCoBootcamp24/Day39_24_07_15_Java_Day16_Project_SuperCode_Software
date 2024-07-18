@@ -194,8 +194,6 @@ public class EducationalCompany {
                         System.out.println("Assistant " + t.getFirstname() + " " + t.getLastname() + " assigned to module " + courseModule.getName() + " in Course " + course.getName());
                         assistTrainerAssigned = true;
                         break; // exit the loop once a trainer is assigned
-
-                        }
                     }
 
                 }
@@ -236,7 +234,7 @@ public class EducationalCompany {
     private void sortTrainersList() {
         trainerList.sort(new Comparator<Trainer>() {
             public int compare(Trainer t1, Trainer t2) {
-                return Integer.compare(t1.getModulList().size(), t2.getModulList().size());
+                return Long.compare(t1.getWorkingDaysInModulesAssigned(), t2.getWorkingDaysInModulesAssigned());
             }
         });
     }
