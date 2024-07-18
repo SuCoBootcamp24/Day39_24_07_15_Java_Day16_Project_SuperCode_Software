@@ -9,27 +9,27 @@ public class Administration {
         LocalDate birthday = LocalDate.of(1990, 2, 24);
         LocalDate inCompanyDate = LocalDate.of(2007, 2, 24);
 
-        LocalDate start1 = LocalDate.of(2024, 1, 1);
-        LocalDate end1 = LocalDate.of(2024, 2, 2);
+        LocalDate start0101 = LocalDate.of(2024, 1, 1);
+        LocalDate end0202 = LocalDate.of(2024, 2, 2);
 
-        LocalDate start2 = LocalDate.of(2024, 3, 3);
-        LocalDate end2 = LocalDate.of(2024, 4, 4);
+        LocalDate start0302 = LocalDate.of(2024, 2, 3);
+        LocalDate end0404 = LocalDate.of(2024, 4, 4);
 
-        LocalDate start3 = LocalDate.of(2024, 5, 5);
-        LocalDate end3 = LocalDate.of(2024, 6, 6);
+        LocalDate start0504 = LocalDate.of(2024, 4, 5);
+        LocalDate end0606 = LocalDate.of(2024, 6, 6);
 
-        LocalDate start4 = LocalDate.of(2024, 7, 7);
-        LocalDate end4 = LocalDate.of(2024, 8, 8);
+        LocalDate start0706 = LocalDate.of(2024, 6, 7);
+        LocalDate end0808 = LocalDate.of(2024, 8, 8);
 
         // ------Personen erstellen------
         // ------Trainer erstellen----
-        Trainer trainer1 = new Trainer("1","1", birthday,"address","abs@abc.de", inCompanyDate);
-        Trainer trainer2 = new Trainer("2","1", birthday,"address","abs@abc.de", inCompanyDate);
-        Trainer trainer3 = new Trainer("3","1", birthday,"address","abs@abc.de", inCompanyDate);
-        Trainer trainer4 = new Trainer("4","1", birthday,"address","abs@abc.de", inCompanyDate);
-        Trainer trainer5 = new Trainer("5","1", birthday,"address","abs@abc.de", inCompanyDate);
-        Trainer trainer6 = new Trainer("6","1", birthday,"address","abs@abc.de", inCompanyDate);
-        Trainer trainer7 = new Trainer("7","1", birthday,"address","abs@abc.de", inCompanyDate);
+        Trainer trainer1 = new Trainer("trasiner1","Blabla", birthday,"address","abs@abc.de", inCompanyDate);
+        Trainer trainer2 = new Trainer("trasiner2","Blabla", birthday,"address","abs@abc.de", inCompanyDate);
+        Trainer trainer3 = new Trainer("trasiner3","Blabla", birthday,"address","abs@abc.de", inCompanyDate);
+        Trainer trainer4 = new Trainer("trasiner4","Blabla", birthday,"address","abs@abc.de", inCompanyDate);
+        Trainer trainer5 = new Trainer("trasiner5","Blabla", birthday,"address","abs@abc.de", inCompanyDate);
+        Trainer trainer6 = new Trainer("trasiner6","Blabla", birthday,"address","abs@abc.de", inCompanyDate);
+        Trainer trainer7 = new Trainer("trasiner7","Blabla", birthday,"address","abs@abc.de", inCompanyDate);
 
 
         // -----Trainer erhalten Lizenzen-----
@@ -43,21 +43,21 @@ public class Administration {
         trainer6.addLicenseToList("ASSIST");
 
         //------Student erstellen ----
-        Student student1 = new Student("s1","1", birthday,"address","abs@abc.de", "java");
-        Student student2 = new Student("s2","1", birthday,"address","abs@abc.de", "JAVA");
-        Student student3 = new Student("s3","1", birthday,"address","abs@abc.de", "JAVA");
-        Student student4 = new Student("s4","1", birthday,"address","abs@abc.de", "JAVA");
-        Student student5 = new Student("s5","1", birthday,"address","abs@abc.de", "JAVA");
-        Student student6 = new Student("s6","1", birthday,"address","abs@abc.de", "JAVA");
-        Student student7 = new Student("s7","1", birthday,"address","abs@abc.de", "JAVA");
-        Student student8 = new Student("s8","1", birthday,"address","abs@abc.de", "JAVA");
-        Student student9 = new Student("s9","1", birthday,"address","abs@abc.de", "java");
-        Student student10 = new Student("s10","1", birthday,"address","abs@abc.de", "HTML");
-        Student student11 = new Student("s11","1", birthday,"address","abs@abc.de", "HTML");
-        Student student12 = new Student("s12","1", birthday,"address","abs@abc.de", "HTML");
-        Student student13 = new Student("s13","1", birthday,"address","abs@abc.de", "HTML");
-        Student student14 = new Student("s14","1", birthday,"address","abs@abc.de", "HTML");
-        Student student15 = new Student("s15","1", birthday,"address","abs@abc.de", "HTML");
+        Student student1 = new Student("student1","smith", birthday,"address","abs@abc.de", "java");
+        Student student2 = new Student("student2","smith", birthday,"address","abs@abc.de", "JAVA");
+        Student student3 = new Student("student3","smith", birthday,"address","abs@abc.de", "html");
+        Student student4 = new Student("student4","smith", birthday,"address","abs@abc.de", "JAVA");
+        Student student5 = new Student("student5","smith", birthday,"address","abs@abc.de", "html");
+        Student student6 = new Student("student6","smith", birthday,"address","abs@abc.de", "JAVA");
+        Student student7 = new Student("student7","smith", birthday,"address","abs@abc.de", "JAVA");
+        Student student8 = new Student("student8","smith", birthday,"address","abs@abc.de", "JAVA");
+        Student student9 = new Student("student9","smith", birthday,"address","abs@abc.de", "java");
+        Student student10 = new Student("student10","smith", birthday,"address","abs@abc.de", "HTML");
+        Student student11 = new Student("student11","smith", birthday,"address","abs@abc.de", "HTML");
+        Student student12 = new Student("student12","smith", birthday,"address","abs@abc.de", "java");
+        Student student13 = new Student("student13","smith", birthday,"address","abs@abc.de", "HTML");
+        Student student14 = new Student("student14","smith", birthday,"address","abs@abc.de", "HTML");
+        Student student15 = new Student("student15","smith", birthday,"address","abs@abc.de", "HTML");
 
         // ------Bildungsunternehmen------
         EducationalCompany company1 = new EducationalCompany("SuperTest", inCompanyDate, "Software-Development");
@@ -93,56 +93,50 @@ public class Administration {
         company1.addStudent(student15);
 
         // ------Kurse erstellen------
-        Course course1 = new Course("Java1", start1, end3);
-        Course course2 = new Course("HTML1", start2, end3);
+        Course course1 = new Course("Java1", start0101, end0404);
+        Course course2 = new Course("HTML1", start0504, end0808);
 
-        // ------Module inkl. Tasks (==) für den Kurse erstelle------
-        Module module1 = new Module("GIT1", start1,end1, "GIT");
-        for (int i = 0; i < Duration.between(module1.getStart().atStartOfDay(), module1.getEnd().atStartOfDay()).toDays(); i++) {
+        // - Module1, Module2 for course1
+        // ------Module inkl. Tasks (>) für den Kurse erstelle------
+        Module module1 = new Module("GIT1", start0101,end0202, "GIT");
+        for (int i = 0; i < module1.calcAllModuleTimeInDays(); i++) {
             module1.addTaskToList(new Task("null", "null", 1));
         }
 
-        // ------Module inkl. Tasks (<) für den Kurse erstellen------
-        Module module2 = new Module("JAVA2", start2,end2, "JAVA");
-        for (int i = 0; i < Duration.between(module2.getStart().atStartOfDay(), module2.getEnd().atStartOfDay()).toDays() + 2; i++) {
+        // ------Module inkl. Tasks (>) für den Kurse erstellen------
+        Module module2 = new Module("JAVA2", start0302,end0404, "JAVA");
+        for (int i = 0; i < module2.calcAllModuleTimeInDays(); i++) {
             module2.addTaskToList(new Task("null", "null", 1));
         }
 
-        // ------Module inkl. Tasks (==) für den Kurse erstelle------
-        Module module3 = new Module("HTML3", start3,end3, "HTML");
-        for (int i = 0; i < Duration.between(module3.getStart().atStartOfDay(), module3.getEnd().atStartOfDay()).toDays(); i++) {
+        // - Module3 and Module4 for course2
+        // ------Module inkl. Tasks (>) für den Kurse erstelle------
+        Module module3 = new Module("HTML3", start0504,end0606, "HTML");
+        for (int i = 0; i < module3.calcAllModuleTimeInDays(); i++) {
             module3.addTaskToList(new Task("null", "null", 1));
         }
 
-        // ------Modul ohne Tasks für den Kurs erstellen------
-        Module module4 = new Module("FRONTEND4", start4,end4, "FRONTEND");
-
-        // ------Module inkl. Tasks (==) für den Kurse erstelle------
-        Module module5 = new Module("BACKEND5", start2,end4, "BACKEND");
-        for (int i = 0; i < Duration.between(module5.getStart().atStartOfDay(), module5.getEnd().atStartOfDay()).toDays(); i++) {
-            module5.addTaskToList(new Task("null", "null", 1));
+        // -----Module inkl. Tasks (>) für den Kurse erstelle------
+        Module module4 = new Module("FRONTEND4", start0706,end0808, "FRONTEND");
+        for (int i = 0; i < module4.calcAllModuleTimeInDays(); i++) {
+            module4.addTaskToList(new Task("null", "null", 1));
         }
-
-        // ------Modul ohne Tasks für den Kurs erstellen------
-        Module module6 = new Module("UXUI6", start4,end4, "UXUI");
-
 
         // ------Module zum Kurs1 hinzufuegen------
         course1.addModule(module1);
         course1.addModule(module2);
-        course1.addModule(module3);
 
         // ------Module zum Kurs2 hinzufuegen------
+        course2.addModule(module3);
         course2.addModule(module4);
-        course2.addModule(module5);
-        course2.addModule(module6);
 
         // -----Kurs in das Unternehmen speichern-------
         company1.addCourse(course1);
         company1.addCourse(course2);
-        System.out.println("here");
+
+        // ------Kurse aus dem Unternehmen anzeigenlassen------
         company1.printCourse();
-        System.out.println("here");
+        System.out.println();
 
         // ------Alle Module im Kurs1 anzeigenlassen------
         course1.printModules();
@@ -161,6 +155,7 @@ public class Administration {
 
         // -----Alle Trainer im Kurs anzeigen-----
         course1.showAllTrainersInAllModules();
+        System.out.println();
 
         // -----Teilnehmer in die gewuenschen Kurse verteilen----
         company1.addStudentToCourse(course1);
@@ -169,7 +164,9 @@ public class Administration {
 
         // ----Teilnehmer 1 hat nach dem Kursende heute einen neuen Job gefunden-----
         student1.setJobBegin(LocalDate.now());
-
+        student2.setJobBegin(LocalDate.now());
+        student4.setJobBegin(LocalDate.now());
+        student6.setJobBegin(LocalDate.now());
 
         // ------- STATISTIK---------
         // # Jobvermittlungsquote
@@ -183,20 +180,20 @@ public class Administration {
         course1.printJobPlacementRate();
         System.out.println();
         course2.printJobPlacementRate();
+        System.out.println();
 
         // # Bewertung des Kurses von den Absolventen
-        System.out.println();
 
         // Studenten bewerten den Kurs
         student1.addFeedback(course1, "The course has changed my life", 5);
         student2.addFeedback(course1, "The course has changed my life", 4);
-        student3.addFeedback(course1, "The course has changed my life", 2);
-        student4.addFeedback(course1, "The course has changed my life", 5);
+        student4.addFeedback(course1, "The course has changed my life", 2);
+        student6.addFeedback(course1, "The course has changed my life", 5);
 
         student10.addFeedback(course2, "The course has changed my life", 1);
         student11.addFeedback(course2, "The course has changed my life", 1);
-        student12.addFeedback(course2, "The course has changed my life", 1);
         student13.addFeedback(course2, "The course has changed my life", 1);
+        student14.addFeedback(course2, "The course has changed my life", 1);
 
         // Bewertungsergebnisse des Kurses
         company1.bestReviewedCourse();

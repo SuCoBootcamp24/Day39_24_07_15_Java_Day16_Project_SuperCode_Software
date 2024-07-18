@@ -110,7 +110,7 @@ public class EducationalCompany {
     }
 
     public void addCourse(Course course) {
-        if (!course.modulesCoverEntirePeriod()) {
+        if (course.modulesDoesNotCoverEntirePeriod()) {
             System.out.printf("Course: %s is not complete, due to a lack of modules. It can't be added to the course list.%n", course.getName());
             return;
         }

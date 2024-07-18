@@ -7,7 +7,6 @@ import java.util.Map;
 public class Module {
     
     private static long lastId = 1;
-
     private final long ID;
     private String name;
     private HashMap<Task, Integer> taskList = new HashMap<>();
@@ -141,7 +140,7 @@ public class Module {
     }
 
     public long calcAllModuleTimeInDays() {
-        return Duration.between(start.atStartOfDay(), end.atStartOfDay()).toDays();
+        return Duration.between(start.atStartOfDay(), end.atStartOfDay()).toDays() + 1;
     }
 
     private int calcAllTaskDays() {
@@ -152,7 +151,7 @@ public class Module {
         return sum;
     }
 
-    private int calculateWorkingDays(LocalDate startDate, LocalDate endDate) {
+    public int calculateWorkingDays(LocalDate startDate, LocalDate endDate) {
         int workingDays = 0;
         LocalDate currentDate = startDate;
         while (!currentDate.isAfter(endDate)) {

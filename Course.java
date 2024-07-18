@@ -131,7 +131,7 @@ public class Course {
 
     public long calcCourseTimeInDays() {
         Duration duration = Duration.between(getStartingDate().atStartOfDay(), getEndingDate().atStartOfDay());
-        return duration.toDays();
+        return duration.toDays() + 1;
     }
 
     public void printModules() {
@@ -217,11 +217,11 @@ public class Course {
     }
 
 
-    public boolean modulesCoverEntirePeriod() {
+    public boolean modulesDoesNotCoverEntirePeriod() {
         long sumModulesDays = 0;
         for (Module module : getModules()) {
             sumModulesDays += module.calcAllModuleTimeInDays();
         }
-        return sumModulesDays >= calcCourseTimeInDays();
+        return sumModulesDays != calcCourseTimeInDays();
     }
 }
