@@ -117,8 +117,10 @@ public class Course {
     }
 
     public void addStudent(Student student) {
-        if (getStudents().contains(student))
-            throw new IllegalStateException("Student already enrolled in the course");
+        if (getStudents().contains(student)) {
+            System.out.println("Student already enrolled in the course");
+            return;
+        }
         getStudents().add(student);
         student.setHisCourse(this);
     }

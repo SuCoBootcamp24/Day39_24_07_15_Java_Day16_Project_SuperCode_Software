@@ -48,23 +48,21 @@ public class Administration {
 
         //------Student erstellen ----
         ArrayList<Student> studentList = new ArrayList<>(List.of(
-        new Student("John", "Smith", LocalDate.of(2000, 1, 1), "123 Main St", "john.smith1@abc.de", "Java"),
-        new Student("Jane", "Doe", LocalDate.of(2000, 2, 2), "124 Main St", "jane.doe2@abc.de", "Java"),
-        new Student("Alice", "Johnson", LocalDate.of(2000, 3, 3), "125 Main St", "alice.johnson3@abc.de", "HTML"),
-        new Student("Bob", "Brown", LocalDate.of(2000, 4, 4), "126 Main St", "bob.brown4@abc.de", "Java"),
-        new Student("Charlie", "Davis", LocalDate.of(2000, 5, 5), "127 Main St", "charlie.davis5@abc.de", "HTML"),
-        new Student("Diana", "Miller", LocalDate.of(2000, 6, 6), "128 Main St", "diana.miller6@abc.de", "Java"),
-        new Student("Eve", "Wilson", LocalDate.of(2000, 7, 7), "129 Main St", "eve.wilson7@abc.de", "Java"),
-        new Student("Frank", "Moore", LocalDate.of(2000, 8, 8), "130 Main St", "frank.moore8@abc.de", "Java"),
-        new Student("Grace", "Taylor", LocalDate.of(2000, 9, 9), "131 Main St", "grace.taylor9@abc.de", "Java"),
-        new Student("Hank", "Anderson", LocalDate.of(2000, 10, 10), "132 Main St", "hank.anderson10@abc.de", "HTML"),
-        new Student("Ivy", "Thomas", LocalDate.of(2000, 11, 11), "133 Main St", "ivy.thomas11@abc.de", "HTML"),
-        new Student("Jack", "Jackson", LocalDate.of(2000, 12, 12), "134 Main St", "jack.jackson12@abc.de", "Java"),
-        new Student("Kelly", "White", LocalDate.of(2001, 1, 13), "135 Main St", "kelly.white13@abc.de", "HTML"),
-        new Student("Leo", "Harris", LocalDate.of(2001, 2, 14), "136 Main St", "leo.harris14@abc.de", "HTML"),
-        new Student("Mia", "Martin", LocalDate.of(2001, 3, 15), "137 Main St", "mia.martin15@abc.de", "HTML"),
-        new Student("Nina", "Clark", LocalDate.of(1990, 1, 16), "138 Main St", "nina.clark16@abc.de", "java"),
-        new Student("Oscar", "Lewis", LocalDate.of(1991, 2, 17), "139 Main St", "oscar.lewis17@abc.de", "java")
+                new Student("John", "Smith", LocalDate.of(2000, 1, 1), "123 Main St", "john.smith1@abc.de", "Java"),
+                new Student("Jane", "Doe", LocalDate.of(2000, 2, 2), "124 Main St", "jane.doe2@abc.de", "Java"),
+                new Student("Alice", "Johnson", LocalDate.of(2000, 3, 3), "125 Main St", "alice.johnson3@abc.de", "HTML"),
+                new Student("Bob", "Brown", LocalDate.of(2000, 4, 4), "126 Main St", "bob.brown4@abc.de", "Java"),
+                new Student("Charlie", "Davis", LocalDate.of(2000, 5, 5), "127 Main St", "charlie.davis5@abc.de", "HTML"),
+                new Student("Diana", "Miller", LocalDate.of(2000, 6, 6), "128 Main St", "diana.miller6@abc.de", "Java"),
+                new Student("Eve", "Wilson", LocalDate.of(2000, 7, 7), "129 Main St", "eve.wilson7@abc.de", "Java"),
+                new Student("Frank", "Moore", LocalDate.of(2000, 8, 8), "130 Main St", "frank.moore8@abc.de", "Java"),
+                new Student("Grace", "Taylor", LocalDate.of(2000, 9, 9), "131 Main St", "grace.taylor9@abc.de", "Java"),
+                new Student("Hank", "Anderson", LocalDate.of(2000, 10, 10), "132 Main St", "hank.anderson10@abc.de", "HTML"),
+                new Student("Ivy", "Thomas", LocalDate.of(2000, 11, 11), "133 Main St", "ivy.thomas11@abc.de", "HTML"),
+                new Student("Jack", "Jackson", LocalDate.of(2000, 12, 12), "134 Main St", "jack.jackson12@abc.de", "Java"),
+                new Student("Kelly", "White", LocalDate.of(2001, 1, 13), "135 Main St", "kelly.white13@abc.de", "HTML"),
+                new Student("Leo", "Harris", LocalDate.of(2001, 2, 14), "136 Main St", "leo.harris14@abc.de", "HTML"),
+                new Student("Mia", "Martin", LocalDate.of(2001, 3, 15), "137 Main St", "mia.martin15@abc.de", "HTML")
         ));
 
         // ------Bildungsunternehmen------
@@ -137,8 +135,10 @@ public class Administration {
         course2.printModules();
         System.out.println();
 
-        // ------Trainer zu dem Kurs hinzufuegen------
+        // ------Trainer zu den Kursen hinzufuegen------
         company1.addTrainerToCourse(course1);
+        System.out.println();
+
         company1.addTrainerToCourse(course2);
         System.out.println();
 
@@ -159,7 +159,7 @@ public class Administration {
         System.out.println();
 
 
-        // ----Teilnehmer 1 hat nach dem Kursende heute einen neuen Job gefunden-----
+        // ----Teilnehmer 1-4 haben nach dem Kursende heute einen neuen Job gefunden-----
         studentList.get(0).setJobBegin(LocalDate.now());
         studentList.get(1).setJobBegin(LocalDate.now());
         studentList.get(3).setJobBegin(LocalDate.now());
@@ -167,32 +167,34 @@ public class Administration {
 
         // ------- STATISTIK---------
         // # Jobvermittlungsquote
-            // Bester / Schlechtester Kurs bis heute
+        // Bester / Schlechtester Kurs bis heute
         System.out.println("Best Course With Job Placement Rate");
         company1.bestCourseWithJobPlacementRate();
         System.out.println();
-            // Bester / Schlechtester Kurs bis n Tage nach Kursende
+        // Bester / Schlechtester Kurs bis n Tage nach Kursende
         System.out.println("Best Course With Job Placement Rate after 30 days");
         company1.bestCourseWithJobPlacementRateAfterNDays(30);
         System.out.println();
 
-            // Jobvermittlungsquote eines Kurses
+        // Jobvermittlungsquote eines Kurses
 
         course1.printJobPlacementRate();
-        System.out.println();
-        course2.printJobPlacementRate();
         System.out.println();
 
         // # Bewertung des Kurses von den Absolventen
 
         // Studenten bewerten den Kurs
-        studentList.get(0).addFeedback(course1, "The course has changed my life", 5);
-        studentList.get(1).addFeedback(course1, "The course has changed my life", 4);
-        studentList.get(3).addFeedback(course1, "The course has changed my life", 2);
-        studentList.get(5).addFeedback(course1, "The course has changed my life", 5);
+        studentList.get(0).addFeedback(course1, "This course provided great insights and practical knowledge. Highly recommend!", 5);
+        studentList.get(1).addFeedback(course1, "Very informative course with good examples. Could use a bit more depth in certain areas.", 4);
+        studentList.get(3).addFeedback(course1, "The course content was okay, but I found the delivery a bit lacking. Needs improvement.", 2);
+        studentList.get(5).addFeedback(course1, "Excellent course! The instructor was very knowledgeable and engaging.", 5);
 
         System.out.println();
         // Bewertungsergebnisse des Kurses
         company1.bestReviewedCourse();
+
+
+
+
     }
 }
