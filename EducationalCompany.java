@@ -101,6 +101,7 @@ public class EducationalCompany {
     }
 
     public void addStudent(Student student) {
+
         if (!getStudentList().contains(student)) getStudentList().add(student);
     }
 
@@ -207,6 +208,10 @@ public class EducationalCompany {
 
 
     public void addStudentToCourse(Course course) {
+        if(courseIsNotInCourseList(course)) {
+            System.out.printf("Course: %s is not in the course list. It's not possible to add a Student yet.%n", course.getName());
+            return;
+        }
         int remainingSeats = 0;
         for (Student student : studentList) {
             boolean isAlreadyEnrolled = student.getHisCourse() != null;
