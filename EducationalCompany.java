@@ -234,7 +234,7 @@ public class EducationalCompany {
     private void sortTrainersList() {
         trainerList.sort(new Comparator<Trainer>() {
             public int compare(Trainer t1, Trainer t2) {
-                return Integer.compare(t1.getModulList().size(), t2.getModulList().size());
+                return Long.compare(t1.getWorkingDaysInModulesAssigned(), t2.getWorkingDaysInModulesAssigned());
             }
         });
     }
