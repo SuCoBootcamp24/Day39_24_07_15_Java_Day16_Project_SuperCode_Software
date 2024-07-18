@@ -15,9 +15,9 @@ public class EducationalCompany {
 
 
 
-    public EducationalCompany(String name, LocalDate FOUNDING_DATE, String category) {
+    public EducationalCompany(String name, LocalDate foundingDate, String category) {
         setName(name);
-        this.FOUNDING_DATE = FOUNDING_DATE;
+        this.FOUNDING_DATE = foundingDate;
         setCategory(category);
     }
     
@@ -66,6 +66,7 @@ public class EducationalCompany {
     public void setTrainerList(ArrayList<Trainer> trainerList) {
         this.trainerList = trainerList;
     }
+
 
    //---
     public ArrayList<Student> getStudentList() {
@@ -129,11 +130,6 @@ public class EducationalCompany {
                 System.out.println("\t" + c + " rate: " + c.jobPlacementRate());
             }
         }
-    }
-
-    @Override
-    public String toString(){
-        return getName() + ", Category: " + getCategory() + ", Founding Date: " + getFOUNDING_DATE();
     }
 
     public void addTrainerToCourse(Course course) {
@@ -290,4 +286,10 @@ public class EducationalCompany {
         }
         return worseCourse;
     }
+
+    @Override
+    public String toString(){
+        return getName() + ", Category: " + getCategory() + ", Founding Date: " + getFOUNDING_DATE();
+    }
+
 }
