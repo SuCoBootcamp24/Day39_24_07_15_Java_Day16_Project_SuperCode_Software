@@ -2,14 +2,14 @@ public class Feedback {
 
     private Student student;
     private String message;
-    private Double note;
+    private double note;
 
 
 
 
-    public Feedback(Student student, String text, double note) {
+    public Feedback(Student student, String message, double note) {
         setStudent(student);
-        setMessage(text);
+        setMessage(message);
         setNote(note);
     }
 
@@ -29,11 +29,11 @@ public class Feedback {
         this.message = message;
     }
 
-    public Double getNote() {
+    public double getNote() {
         return note;
     }
 
-    public void setNote(Double note) {
+    public void setNote(double note) {
         this.note = note;
     }
 

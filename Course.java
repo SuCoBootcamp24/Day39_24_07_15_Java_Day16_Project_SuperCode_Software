@@ -6,7 +6,10 @@ import java.util.ArrayList;
 
 public class Course {
     private static long lastID = 1;
-    private long ID;
+
+    private final int MAX_STUDENT = 8;
+    private final long ID;
+
     private String name;
     private LocalDate startingDate;
     private LocalDate endingDate;
@@ -14,71 +17,83 @@ public class Course {
     private ArrayList<Student> students;
     private ArrayList<Feedback> feedbackBox;
 
-    private final int MAX_STUDENT = 8;
 
     public Course(String name, LocalDate startingDate, LocalDate endingDate) {
-        this.name = name;
-        this.startingDate = startingDate;
-        this.endingDate = endingDate;
-        this.ID = lastID;
-        lastID++;
-        this.modules = new ArrayList<>();
-        this.students = new ArrayList<>();
-        this.feedbackBox = new ArrayList<>();
-
+        setName(name);
+        setStartingDate(startingDate);
+        setEndingDate(endingDate);
+        modules = new ArrayList<>();
+        students = new ArrayList<>();
+        feedbackBox = new ArrayList<>();
+        ID = lastID++;
     }
     
-    // - getter setter
+    // ----getter / setter methods------
 
     public long getID() {
         return ID;
     }
-    
+
+    //---
     public String getName() {
         return name;
     }
-    
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    //----
     public LocalDate getStartingDate() {
         return startingDate;
     }
-    
+
+    public void setStartingDate(LocalDate startingDate) {
+        this.startingDate = startingDate;
+    }
+
+    //----
     public LocalDate getEndingDate() {
         return endingDate;
     }
-    
 
+    public void setEndingDate(LocalDate endingDate) {
+        this.endingDate = endingDate;
+    }
+
+    //----
     public ArrayList<Module> getModules() {
         return modules;
     }
-    
+
+    //----
     public ArrayList<Student> getStudents() {
         return students;
     }
 
+    //----
     public ArrayList<Feedback> getFeedbackBox() {
         return feedbackBox;
     }
 
-    public void setFeedbackBox(ArrayList<Feedback> feedbackBox) {
-        this.feedbackBox = feedbackBox;
+    //----
+    public int getMAX_STUDENT() {
+        return MAX_STUDENT;
     }
 
-    public void addFeedbackForCourse(Student student, String text, double note) {
-        if (endingDate.isAfter(LocalDate.now()) || endingDate.isEqual(LocalDate.now())) System.out.println("Course " + this.name + " is not finished yet, you cannot give a feedback before the end!");
+    // ----- Other methods-----
+    public void addFeedbackForCourse(Student student, String message, double note) {
+        if (getEndingDate().isAfter(LocalDate.now()) || getEndingDate().isEqual(LocalDate.now())) System.out.println("Course " + getName() + " is not finished yet, you cannot give a feedback before the end!");
         else if (note<1 || note>5) System.out.println("Note must be between 1 and 5");
         else {
-            for (Feedback f : feedbackBox) {
+            for (Feedback f : getFeedbackBox()) {
                 if (f.getStudent().equals(student)) {
                     System.out.println("Student " + student.getFirstname() + " " + student.getLastname() + " already has a feedback for this course!");
                     return;
                 }
             }
-            feedbackBox.add(new Feedback(student, text, note));
+            getFeedbackBox().add(new Feedback(student, message, note));
         }
-    }
-
-    public int getMAX_STUDENT() {
-        return MAX_STUDENT;
     }
 
     public void addModule(Module module) {
@@ -89,17 +104,17 @@ public class Course {
 
         if (isInCourseTime) {
             if (weHaveEnoughTasks && fitsWithModulesTime)
-              modules.add(module);
+              getModules().add(module);
             else if (!weHaveEnoughTasks && fitsWithModulesTime)
-                System.out.println("Module " + module.getId() + " not added to course " + this.name + " - Not enough tasks");
-            else System.out.println("Module " + module.getId() + " not added to course " + this.name + " - Time is overlapping");
-        } else System.out.println("Module " + module.getId() + " is out of Corse - Module not added to course " + this.name + "!");
+                System.out.println("Module " + module.getID() + " not added to course " + getName() + " - Not enough tasks");
+            else System.out.println("Module " + module.getID() + " not added to course " + getName() + " - Time is overlapping");
+        } else System.out.println("Module " + module.getID() + " is out of Corse - Module not added to course " + getName() + "!");
         }
 
     private boolean verifyModuleTime(Module module) {
         boolean isOverlapping = false;
 
-            for (Module m : modules) {
+            for (Module m : getModules()) {
                 isOverlapping = module.getEnd().isAfter(m.getStart()) && module.getStart().isBefore(m.getEnd());
                 if (isOverlapping)
                     return false;
@@ -109,65 +124,60 @@ public class Course {
     }
 
     public void removeModule(Module module) {
-        if (modules.contains(module))
-            modules.remove(module);
+        if (getModules().contains(module))
+            getModules().remove(module);
         else System.out.println("Student not enrolled in this course.");
     }
 
     public void addStudent(Student student) {
-        if (students.contains(student))
+        if (getStudents().contains(student))
             throw new IllegalStateException("Student already enrolled in the course");
-        students.add(student);
+        getStudents().add(student);
         student.setHisCourse(this);
     }
 
     public void removeStudent(Student student) {
-        if (students.contains(student))
-            students.remove(student);
+        if (getStudents().contains(student))
+            getStudents().remove(student);
         else System.out.println("Student not enrolled in this course.");
     }
 
     public long calcCourseTimeInDays() {
-        Duration duration = Duration.between(startingDate.atStartOfDay(), endingDate.atStartOfDay());
+        Duration duration = Duration.between(getStartingDate().atStartOfDay(), getEndingDate().atStartOfDay());
         return duration.toDays();
     }
 
     public void printModules() {
         System.out.println("Modules for course " + toString());
-        if (modules.isEmpty())
+        if (getModules().isEmpty())
             System.out.println("\tModules are not given yet");
         
         else {
-            for (Module module : modules) {
+            for (Module module : getModules()) {
                 System.out.println("\t" + module.toString());
             }
         }
     }
 
-    @Override
-    public String toString() {
-        return ID + ", " + name + ", Course-time: " + startingDate + " - " + endingDate;
-    }
-
     public void showAllTrainersInAllModules() {
-        for (Module module : modules) {
+        for (Module module : getModules()) {
             module.printTrainerForThisModule();
         }
     }
-
+    //----------------------------------------------------------------
     public boolean isAlreadyFull() {
-        return students.size() == MAX_STUDENT;
+        return getStudents().size() == getMAX_STUDENT();
     }
 
     public double jobPlacementRate(){
         if (!getEndingDate().isBefore(LocalDate.now())) return -1;
         int count = 0;
-        for(Student s : students) {
+        for(Student s : getStudents()) {
             if (s.getJobBegin() != null) {
                 count++;
             }
         }
-        return ((double) count / students.size()) * 100;
+        return ((double) count / getStudents().size()) * 100;
     }
 
     public double jobPlacementRate(int days){
@@ -175,13 +185,13 @@ public class Course {
         if (!getEndingDate().isBefore(LocalDate.now())) return -1;
 
         int count = 0;
-        for(Student s : students) {
+        for(Student s : getStudents()) {
 
             if (s.getJobBegin() != null && (s.getJobBegin().isEqual(toDayToCheck) || s.getJobBegin().isBefore(toDayToCheck))) {
                 count++;
             }
         }
-        return ((double) count / students.size()) * 100;
+        return ((double) count / getStudents().size()) * 100;
     }
 
     public void printJobPlacementRate() {
@@ -191,11 +201,17 @@ public class Course {
     }
 
     public double getReviewAverage() {
-        if (feedbackBox.isEmpty()) return -1;
+        if (getFeedbackBox().isEmpty()) return -1;
         double sum = 0;
-        for (Feedback feedback : feedbackBox) {
+        for (Feedback feedback : getFeedbackBox()) {
             sum += feedback.getNote();
         }
-        return sum / feedbackBox.size();
+        return sum / getFeedbackBox().size();
+    }
+
+
+    @Override
+    public String toString() {
+        return getID() + ", " + getName() + ", Course-time: " + getStartingDate() + " - " + getEndingDate();
     }
 }
