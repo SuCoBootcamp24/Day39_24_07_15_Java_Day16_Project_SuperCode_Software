@@ -140,13 +140,17 @@ public class Administration {
         // -----Kurs in das Unternehmen speichern-------
         company1.addCourse(course1);
         company1.addCourse(course2);
+        System.out.println("here");
+        company1.printCourse();
+        System.out.println("here");
 
         // ------Alle Module im Kurs1 anzeigenlassen------
-        course1.showAllTrainersInAllModules();
+        course1.printModules();
         System.out.println();
 
         // ------Alle Module im Kurs2 anzeigenlassen------
-        course2.showAllTrainersInAllModules();
+        course2.printModules();
+        System.out.println();
 
         // ------Trainer zu dem Kurs hinzufuegen------
         company1.addTrainerToCourse(course1);
@@ -196,8 +200,6 @@ public class Administration {
 
         // Bewertungsergebnisse des Kurses
         company1.bestReviewedCourse();
-
-
 
     }
 }

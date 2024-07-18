@@ -112,7 +112,7 @@ public class Module {
         if(!getTaskList().containsKey(task)) getTaskList().put(task, task.getDuration());
     }
 
-    private long calcAllModuleTimeInDays() {
+    public long calcAllModuleTimeInDays() {
         return Duration.between(start.atStartOfDay(), end.atStartOfDay()).toDays();
     }
 
