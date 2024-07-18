@@ -196,5 +196,7 @@ public class Administration {
 
         // Bewertungsergebnisse des Kurses
         company1.bestReviewedCourse();
+
+
     }
 }

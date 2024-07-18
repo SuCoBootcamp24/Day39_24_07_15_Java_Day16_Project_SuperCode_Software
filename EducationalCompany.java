@@ -236,8 +236,7 @@ public class EducationalCompany {
 
 
         for (int i = 0; i < courseList.size(); i++) {
-            if (courseList.get(i).jobPlacementRate() == -1) continue;
-            else {
+            if (courseList.get(i).jobPlacementRate() != -1) {
                 if (i == courseList.size() -1 ) break;
                 else {
                     System.out.println("Worse Course: " + courseList.get(i) + " with " + courseList.get(i).jobPlacementRate() + "%");

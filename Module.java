@@ -1,3 +1,4 @@
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -20,8 +21,6 @@ public class Module {
     public Module(String name, LocalDate start, LocalDate end, String requiredLicense) {
         setName(name);
         setStartAndEnd(start, end);
-        // setStart(start);
-        // setEnd(end);
         setRequiredLicense(requiredLicense);
         this.ID = lastId++;
     }
@@ -112,17 +111,6 @@ public class Module {
         if(!getTaskList().containsKey(task)) getTaskList().put(task, task.getDuration());
     }
 
-    private long calcAllModuleTimeInDays() {
-        return Duration.between(start.atStartOfDay(), end.atStartOfDay()).toDays();
-    }
-
-    private int calcAllTaskDays() {
-        int sum = 0;
-        for (Integer duration : taskList.values()) {
-            sum += duration;
-        }
-        return sum;
-    }
 
     public void printTasks() {
         System.out.println("All Tasks in this Module:");
@@ -139,16 +127,42 @@ public class Module {
     public void printTrainerForThisModule() {
         System.out.println("Trainer for Module " + toString());
         if (getTrainer() == null) { 
-            System.out.println("Trainer dosn't exist");
+            System.out.println("Trainer doesn't exist");
         } else if (getAssistant() == null) {
-            System.out.println("Assistent dosn't exist");
+            System.out.println("Assistent doesn't exist");
         } else {
         System.out.println("\t-Trainer: " + getTrainer().getFirstname() + " " + getTrainer().getLastname() + "\n\t-Assist" + getAssistant().getFirstname() + " " + getAssistant().getLastname());
         }
     }
 
     public boolean verifyModuleTasks() {
-        return calcAllTaskDays() >= calcAllModuleTimeInDays();
+        long allModuleDays = calculateWorkingDays(getStart(), getEnd());
+        long allTaskDays = calcAllTaskDays();
+        return allTaskDays >= allModuleDays;
+    }
+
+    public long calcAllModuleTimeInDays() {
+        return Duration.between(start.atStartOfDay(), end.atStartOfDay()).toDays();
+    }
+
+    private int calcAllTaskDays() {
+        int sum = 0;
+        for (Integer duration : taskList.values()) {
+            sum += duration;
+        }
+        return sum;
+    }
+
+    private int calculateWorkingDays(LocalDate startDate, LocalDate endDate) {
+        int workingDays = 0;
+        LocalDate currentDate = startDate;
+        while (!currentDate.isAfter(endDate)) {
+            if (currentDate.getDayOfWeek()!= DayOfWeek.SATURDAY && currentDate.getDayOfWeek()!= DayOfWeek.SUNDAY) {
+                workingDays++;
+            }
+            currentDate = currentDate.plusDays(1);
+        }
+        return workingDays;
     }
 
 }
