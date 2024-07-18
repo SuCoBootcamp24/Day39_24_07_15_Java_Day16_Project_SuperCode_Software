@@ -61,7 +61,7 @@ public class Trainer extends Person {
     public String toString() {
         return "Trainer " + getID() + " " +
                 getFirstname() + " " + getLastname() + ": " +
-                "DOB: " + getBirthday() +
+                "DOB: " + getBIRTHDAY() +
                 " Licenses: " + licenses.toString() +
                 " Number Modules : " + modulList.size();
     }

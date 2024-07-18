@@ -163,13 +163,13 @@ public class EducationalCompany {
             sortTrainersList();
             for (Module courseModule : course.getModules()) {
 
-                if (courseModule.getAssistent() == null) {
+                if (courseModule.getAssistant() == null) {
                     boolean assistTrainerAssigned = false;
                     for (Trainer t : trainerList) {
 
                         if (t.hasLicense("ASSIST") && t.TrainerIsFree(courseModule)) {
 
-                            courseModule.setAssistent(t);
+                            courseModule.setAssistant(t);
                             System.out.println("Assistant " + t.getFirstname() + " " + t.getLastname() + " assigned to module " + courseModule.getName() + " in Course " + course.getName());
                             assistTrainerAssigned = true;
                             break; // exit the loop once a trainer is assigned

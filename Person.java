@@ -2,18 +2,20 @@ import java.time.LocalDate;
 
 public class Person {
 
+    private static long lastID = 1;
+
+    private final long ID;
+    private final LocalDate BIRTHDAY;
     private String lastname;
     private String firstname;
-    private static long lastID = 0;
-    private long ID;
     private String address;
     private String email;
-    private LocalDate birthday;
+
 
     public Person(String firstname, String lastname, LocalDate birthday, String address, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birthday = birthday;
+        this.BIRTHDAY = birthday;
         this.ID = lastID + 1;
         Person.lastID++;
         this.address = address;
@@ -40,13 +42,13 @@ public class Person {
         return email;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public LocalDate getBIRTHDAY() {
+        return BIRTHDAY;
     }
 
     @Override
      public String toString() {
-        String message = getFirstname() + " " + getLastname() + "\nEmail: " +getEmail() + "\nBirthday: " + getBirthday() + "\nAdress: " + getAddress();
+        String message = getFirstname() + " " + getLastname() + "\nEmail: " +getEmail() + "\nBirthday: " + getBIRTHDAY() + "\nAdress: " + getAddress();
         return message;
         
     }

@@ -7,7 +7,7 @@ public class Module {
     
     private static long lastId = 1;
 
-    private long id;
+    private final long ID;
     private String name;
     private HashMap<Task, Integer> taskList = new HashMap<>();
     private LocalDate start;
@@ -19,17 +19,17 @@ public class Module {
 
     public Module(String name, LocalDate start, LocalDate end, String requiredLicense) {
         setName(name);
-        setStartUndEnd(start, end);
+        setStartAndEnd(start, end);
         // setStart(start);
         // setEnd(end);
         setRequiredLicense(requiredLicense);
-        this.id = lastId++;
+        this.ID = lastId++;
     }
 
     
     //----getter() / setter()---
-    public long getId() {
-        return id;
+    public long getID() {
+        return ID;
     }
     
     
@@ -47,11 +47,7 @@ public class Module {
     public HashMap<Task, Integer> getTaskList() {
         return taskList;
     }
-    
-    public void setTaskList(HashMap<Task, Integer> taskList) {
-        this.taskList = taskList;
-    }
-    
+
     //----
     
     public String getRequiredLicense() {
@@ -61,17 +57,9 @@ public class Module {
     public void setRequiredLicense(String requiredLicense) {
         this.requiredLicense = requiredLicense;
     }
-    
-    //----
 
-    private void setStartUndEnd(LocalDate start, LocalDate end) {
-        if (start.isBefore(end)) {
-            setStart(start);
-            setEnd(end);
-        } else
-            throw new IllegalArgumentException("Starting Date is after end Date.");
-    }
-    
+
+    //----
     public LocalDate getStart() {
         return start;
     }
@@ -102,15 +90,22 @@ public class Module {
     }
 
    //----
-    public Trainer getAssistent() {
+    public Trainer getAssistant() {
         return assistent;
     }
 
-    public void setAssistent(Trainer assistent) {
-        this.assistent = assistent;
+    public void setAssistant(Trainer assistant) {
+        this.assistent = assistant;
     }
 
     //----other---
+    private void setStartAndEnd(LocalDate start, LocalDate end) {
+        if (start.isBefore(end)) {
+            setStart(start);
+            setEnd(end);
+        } else
+            throw new IllegalArgumentException("Starting Date is after end Date.");
+    }
 
     public void addTaskToList(Task task) {
         if(task == null)   throw new IllegalArgumentException("new Task is Empty.");
@@ -129,7 +124,6 @@ public class Module {
         return sum;
     }
 
-
     public void printTasks() {
         System.out.println("All Tasks in this Module:");
         for (Map.Entry<Task, Integer> task : taskList.entrySet()) {
@@ -139,22 +133,23 @@ public class Module {
 
     @Override
     public String toString(){
-        return getId() + ", Name: " + getName() + ", Module-Time: " + getStart() + " - " + getEnd();
+        return getID() + ", Name: " + getName() + ", Module-Time: " + getStart() + " - " + getEnd();
     }
 
     public void printTrainerForThisModule() {
         System.out.println("Trainer for Module " + toString());
         if (getTrainer() == null) { 
             System.out.println("Trainer dosn't exist");
-        } else if (getAssistent() == null) {
+        } else if (getAssistant() == null) {
             System.out.println("Assistent dosn't exist");
         } else {
-        System.out.println("\t-Trainer: " + getTrainer().getFirstname() + " " + getTrainer().getLastname() + "\n\t-Assist" + getAssistent().getFirstname() + " " + getAssistent().getLastname());
+        System.out.println("\t-Trainer: " + getTrainer().getFirstname() + " " + getTrainer().getLastname() + "\n\t-Assist" + getAssistant().getFirstname() + " " + getAssistant().getLastname());
         }
     }
 
     public boolean verifyModuleTasks() {
         return calcAllTaskDays() >= calcAllModuleTimeInDays();
     }
+
 }
 
