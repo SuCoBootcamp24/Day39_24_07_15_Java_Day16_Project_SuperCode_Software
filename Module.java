@@ -111,6 +111,17 @@ public class Module {
         if(!getTaskList().containsKey(task)) getTaskList().put(task, task.getDuration());
     }
 
+    public long calcAllModuleTimeInDays() {
+        return Duration.between(start.atStartOfDay(), end.atStartOfDay()).toDays();
+    }
+
+    private int calcAllTaskDays() {
+        int sum = 0;
+        for (Integer duration : taskList.values()) {
+            sum += duration;
+        }
+        return sum;
+    }
 
     public void printTasks() {
         System.out.println("All Tasks in this Module:");

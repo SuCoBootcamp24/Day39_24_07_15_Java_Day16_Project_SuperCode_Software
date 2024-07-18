@@ -14,8 +14,12 @@ public class EducationalCompany {
     private ArrayList<Course> courseList = new ArrayList<>();
 
 
+  
+
 
     public EducationalCompany(String name, LocalDate foundingDate, String category) {
+
+  
         setName(name);
         this.FOUNDING_DATE = foundingDate;
         setCategory(category);
@@ -105,6 +109,10 @@ public class EducationalCompany {
     }
 
     public void addCourse(Course course) {
+        if (!course.modulesCoverEntirePeriod()) {
+            System.out.printf("Course: %s is not complete, due to a lack of modules. It can't be added to the course list.%n", course.getName());
+            return;
+        }
         if (!getCourseList().contains(course)) getCourseList().add(course);
     }
 
@@ -133,6 +141,10 @@ public class EducationalCompany {
     }
 
     public void addTrainerToCourse(Course course) {
+        if(courseIsNotInCourseList(course)) {
+            System.out.printf("Course: %s is not in the course list. It's not possible to add a Trainer yet.%n", course.getName());
+            return;
+        }
         sortTrainersList();
         for (Module courseModule : course.getModules()) {
 
@@ -155,28 +167,43 @@ public class EducationalCompany {
         }
     }
 
+    private boolean courseIsNotInCourseList(Course course) {
+        for (Course c : courseList) {
+            if (c.equals(course)) return false;
+        }
+        return true;
+    }
+
     public void addAssistTrainerToCourse(Course course) {
-            sortTrainersList();
-            for (Module courseModule : course.getModules()) {
+        if(courseIsNotInCourseList(course)) {
+            System.out.printf("Course: %s is not in the course list. It's not possible to add an Assistant yet.%n", course.getName());
+            return;
+        }
+        sortTrainersList();
+        for (Module courseModule : course.getModules()) {
 
-                if (courseModule.getAssistant() == null) {
-                    boolean assistTrainerAssigned = false;
-                    for (Trainer t : trainerList) {
 
-                        if (t.hasLicense("ASSIST") && t.TrainerIsFree(courseModule)) {
+            if (courseModule.getAssistant() == null) {
+                boolean assistTrainerAssigned = false;
+                for (Trainer t : trainerList) {
 
-                            courseModule.setAssistant(t);
-                            System.out.println("Assistant " + t.getFirstname() + " " + t.getLastname() + " assigned to module " + courseModule.getName() + " in Course " + course.getName());
-                            assistTrainerAssigned = true;
-                            break; // exit the loop once a trainer is assigned
+                    if (t.hasLicense("ASSIST") && t.TrainerIsFree(courseModule)) {
+
+                        courseModule.setAssistant(t);
+                        System.out.println("Assistant " + t.getFirstname() + " " + t.getLastname() + " assigned to module " + courseModule.getName() + " in Course " + course.getName());
+                        assistTrainerAssigned = true;
+                        break; // exit the loop once a trainer is assigned
+
                         }
                     }
-                    if (!assistTrainerAssigned) {
-                        System.out.println("No available Assistant for module " + courseModule.getName() + " in Course" + course.getName());
-                    }
+
+                }
+                if (!assistTrainerAssigned) {
+                    System.out.println("No available Assistant for module " + courseModule.getName() + " in Course" + course.getName());
                 }
             }
         }
+    }
 
 
     public void addStudentToCourse(Course course) {
@@ -231,6 +258,10 @@ public class EducationalCompany {
     }
 
     private void bestCourseLogicHelper() {
+        if (courseList.isEmpty()){
+             System.out.println("There are currently no courses");
+             return;
+        }
         if (courseList.getLast().jobPlacementRate() == -1) System.out.println("There is currently no completed course");
         else System.out.println("Best Course: " + courseList.getLast() + " with " + courseList.getLast().jobPlacementRate() + "%" );
 
