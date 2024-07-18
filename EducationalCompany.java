@@ -192,8 +192,6 @@ public class EducationalCompany {
                         System.out.println("Assistant " + t.getFirstname() + " " + t.getLastname() + " assigned to module " + courseModule.getName() + " in Course " + course.getName());
                         assistTrainerAssigned = true;
                         break; // exit the loop once a trainer is assigned
-
-                        }
                     }
 
                 }
