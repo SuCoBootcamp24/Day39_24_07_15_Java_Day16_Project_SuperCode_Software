@@ -2,6 +2,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import static java.lang.Float.NaN;
+
 public class EducationalCompany {
 
     private final LocalDate FOUNDING_DATE;
@@ -143,7 +145,8 @@ public class EducationalCompany {
         if(courseList == null) System.out.println(" Courses not added");
         else {
             for (Course c : courseList) {
-                System.out.println("\t" + c + " rate: " + c.jobPlacementRate());
+                if(c.jobPlacementRate() == NaN || c.jobPlacementRate() == -1) System.out.println("\t" + c + " rate: Rate not calculated yet");
+                else System.out.println("\t" + c + " rate: " + c.jobPlacementRate());
             }
         }
     }

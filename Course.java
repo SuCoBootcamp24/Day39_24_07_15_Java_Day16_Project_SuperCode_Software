@@ -3,6 +3,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import static java.lang.Double.NaN;
+
 
 public class Course {
     private static long lastID = 1;
@@ -180,7 +182,8 @@ public class Course {
                 count++;
             }
         }
-        return ((double) count / getStudents().size()) * 100;
+        if (count == 0) return 0;
+        return  ((double) count / getStudents().size()) * 100;
     }
 
     public double jobPlacementRate(int days){
