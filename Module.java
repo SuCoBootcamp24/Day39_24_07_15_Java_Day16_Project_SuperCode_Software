@@ -94,6 +94,7 @@ public class Module {
 
     public void setAssistant(Trainer assistant) {
         this.assistent = assistant;
+        assistant.addModuleToList(this);
     }
 
     //----other---
@@ -129,7 +130,7 @@ public class Module {
         } else if (getAssistant() == null) {
             System.out.println("Assistent doesn't exist");
         } else {
-        System.out.println("\t-Trainer: " + getTrainer().getFirstname() + " " + getTrainer().getLastname() + "\n\t-Assist" + getAssistant().getFirstname() + " " + getAssistant().getLastname());
+        System.out.println("\t-Trainer: " + getTrainer().getFirstname() + " " + getTrainer().getLastname() + "\n\t-Assistant: " + getAssistant().getFirstname() + " " + getAssistant().getLastname());
         }
     }
 

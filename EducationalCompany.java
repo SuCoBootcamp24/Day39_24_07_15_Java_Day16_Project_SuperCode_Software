@@ -227,7 +227,7 @@ public class EducationalCompany {
             }
 
         }
-        System.out.println("Remaining Student to locate in Courses are: " + remainingSeats);
+        System.out.printf("Remaining Student to locate in course %s are/is: %s%n", course.getName(), remainingSeats);
 
     }
 

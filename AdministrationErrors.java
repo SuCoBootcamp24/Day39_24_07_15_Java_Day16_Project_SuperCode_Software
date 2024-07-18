@@ -81,5 +81,10 @@ public class AdministrationErrors {
         // -----Kurs in das Unternehmen speichern-------
         company1.addCourse(course1);
         company1.addCourse(course2);
+
+        studentList.get(9).addFeedback(course2, "The course has changed my life", 1);
+        studentList.get(10).addFeedback(course2, "The course has changed my life", 1);
+        studentList.get(12).addFeedback(course2, "The course has changed my life", 1);
+        studentList.get(13).addFeedback(course2, "The course has changed my life", 1);
     }
 }

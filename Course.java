@@ -197,7 +197,7 @@ public class Course {
 
     public void printJobPlacementRate() {
         double rate = jobPlacementRate();
-        if (rate == -1) System.out.println("Course " + getName() + " is not over yet");
+        if (rate == -1) System.out.println("Course " + getName() + " is not over yet, job placement rate is not calculated yet!");
         else System.out.println("Job placement rate Course " + getName() + " is: " + jobPlacementRate() + "%");
     }
 
