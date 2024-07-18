@@ -13,9 +13,15 @@ public class EducationalCompany {
     private ArrayList<Student> studentList = new ArrayList<>();
     private ArrayList<Course> courseList = new ArrayList<>();
 
-    public EducationalCompany(String name, LocalDate FOUNDING_DATE, String category) {
+
+  
+
+
+    public EducationalCompany(String name, LocalDate foundingDate, String category) {
+
+  
         setName(name);
-        this.FOUNDING_DATE = FOUNDING_DATE;
+        this.FOUNDING_DATE = foundingDate;
         setCategory(category);
     }
     
@@ -64,6 +70,7 @@ public class EducationalCompany {
     public void setTrainerList(ArrayList<Trainer> trainerList) {
         this.trainerList = trainerList;
     }
+
 
    //---
     public ArrayList<Student> getStudentList() {
@@ -131,11 +138,6 @@ public class EducationalCompany {
                 System.out.println("\t" + c + " rate: " + c.jobPlacementRate());
             }
         }
-    }
-
-    @Override
-    public String toString(){
-        return getName() + ", Category: " + getCategory() + ", Founding Date: " + getFOUNDING_DATE();
     }
 
     public void addTrainerToCourse(Course course) {
@@ -265,8 +267,7 @@ public class EducationalCompany {
 
 
         for (int i = 0; i < courseList.size(); i++) {
-            if (courseList.get(i).jobPlacementRate() == -1) continue;
-            else {
+            if (courseList.get(i).jobPlacementRate() != -1) {
                 if (i == courseList.size() -1 ) break;
                 else {
                     System.out.println("Worse Course: " + courseList.get(i) + " with " + courseList.get(i).jobPlacementRate() + "%");
@@ -315,4 +316,10 @@ public class EducationalCompany {
         }
         return worseCourse;
     }
+
+    @Override
+    public String toString(){
+        return getName() + ", Category: " + getCategory() + ", Founding Date: " + getFOUNDING_DATE();
+    }
+
 }

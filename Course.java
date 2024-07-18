@@ -82,19 +82,6 @@ public class Course {
     }
 
     // ----- Other methods-----
-    public void addFeedbackForCourse(Student student, String message, double note) {
-        if (getEndingDate().isAfter(LocalDate.now()) || getEndingDate().isEqual(LocalDate.now())) System.out.println("Course " + getName() + " is not finished yet, you cannot give a feedback before the end!");
-        else if (note<1 || note>5) System.out.println("Note must be between 1 and 5");
-        else {
-            for (Feedback f : getFeedbackBox()) {
-                if (f.getStudent().equals(student)) {
-                    System.out.println("Student " + student.getFirstname() + " " + student.getLastname() + " already has a feedback for this course!");
-                    return;
-                }
-            }
-            getFeedbackBox().add(new Feedback(student, message, note));
-        }
-    }
 
     public void addModule(Module module) {
         boolean weHaveEnoughTasks = module.verifyModuleTasks();
@@ -159,12 +146,26 @@ public class Course {
         }
     }
 
+    public void addFeedbackForCourse(Student student, String message, double note) {
+        if (getEndingDate().isAfter(LocalDate.now()) || getEndingDate().isEqual(LocalDate.now())) System.out.println("Course " + getName() + " is not finished yet, you cannot give a feedback before the end!");
+        else if (note<1 || note>5) System.out.println("Note must be between 1 and 5");
+        else {
+            for (Feedback f : getFeedbackBox()) {
+                if (f.getStudent().equals(student)) {
+                    System.out.println("Student " + student.getFirstname() + " " + student.getLastname() + " already has a feedback for this course!");
+                    return;
+                }
+            }
+            getFeedbackBox().add(new Feedback(student, message, note));
+        }
+    }
+
     public void showAllTrainersInAllModules() {
         for (Module module : getModules()) {
             module.printTrainerForThisModule();
         }
     }
-    //----------------------------------------------------------------
+
     public boolean isAlreadyFull() {
         return getStudents().size() == getMAX_STUDENT();
     }
