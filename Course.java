@@ -98,7 +98,7 @@ public class Course {
 
     public void addModule(Module module) {
         boolean weHaveEnoughTasks = module.verifyModuleTasks();
-        boolean isInCourseTime = (module.getStart().isEqual(getStartingDate())  || (module.getStart().isAfter(getStartingDate()) && module.getEnd().isEqual(getEndingDate()))
+        boolean isInCourseTime = (module.getStart().isEqual(getStartingDate())  || module.getStart().isAfter(getStartingDate())) && (module.getEnd().isEqual(getEndingDate())
         || module.getEnd().isBefore(getEndingDate()));
         boolean fitsWithModulesTime = verifyModuleTime(module);
 
@@ -213,5 +213,14 @@ public class Course {
     @Override
     public String toString() {
         return getID() + ", " + getName() + ", Course-time: " + getStartingDate() + " - " + getEndingDate();
+    }
+
+
+    public boolean modulesCoverEntirePeriod() {
+        long sumModulesDays = 0;
+        for (Module module : getModules()) {
+            sumModulesDays += module.calcAllModuleTimeInDays();
+        }
+        return sumModulesDays >= calcCourseTimeInDays();
     }
 }
