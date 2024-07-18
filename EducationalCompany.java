@@ -97,12 +97,19 @@ public class EducationalCompany {
     }
 
     public void removeTrainer(Trainer trainer) {
-        if (getTrainerList().contains(trainer)) getTrainerList().remove(trainer);
+        getTrainerList().remove(trainer);
     }
 
-    public void addStudent(Student student) {
+    public void addStudent(Student newStudent) {
 
-        if (!getStudentList().contains(student)) getStudentList().add(student);
+        if (getStudentList().contains(newStudent)){
+
+                System.out.println("Student: " + newStudent.getFirstname() + " " + newStudent.getLastname() + " is already registered.");
+                return;
+        }
+
+            getStudentList().add(newStudent);
+
     }
 
     public void removeStudent(Student student) {
@@ -110,7 +117,7 @@ public class EducationalCompany {
     }
 
     public void addCourse(Course course) {
-        if (!course.modulesCoverEntirePeriod()) {
+        if (course.modulesDoesNotCoverEntirePeriod()) {
             System.out.printf("Course: %s is not complete, due to a lack of modules. It can't be added to the course list.%n", course.getName());
             return;
         }
@@ -227,7 +234,7 @@ public class EducationalCompany {
             }
 
         }
-        System.out.println("Remaining Student to locate in Courses are: " + remainingSeats);
+        System.out.printf("Remaining Student to locate in course %s are/is: %s%n", course.getName(), remainingSeats);
 
     }
 

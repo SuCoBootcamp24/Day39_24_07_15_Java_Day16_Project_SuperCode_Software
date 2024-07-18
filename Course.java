@@ -117,8 +117,10 @@ public class Course {
     }
 
     public void addStudent(Student student) {
-        if (getStudents().contains(student))
-            throw new IllegalStateException("Student already enrolled in the course");
+        if (getStudents().contains(student)) {
+            System.out.println("Student already enrolled in the course");
+            return;
+        }
         getStudents().add(student);
         student.setHisCourse(this);
     }
@@ -131,7 +133,7 @@ public class Course {
 
     public long calcCourseTimeInDays() {
         Duration duration = Duration.between(getStartingDate().atStartOfDay(), getEndingDate().atStartOfDay());
-        return duration.toDays();
+        return duration.toDays() + 1;
     }
 
     public void printModules() {
@@ -197,7 +199,7 @@ public class Course {
 
     public void printJobPlacementRate() {
         double rate = jobPlacementRate();
-        if (rate == -1) System.out.println("Course " + getName() + " is not over yet");
+        if (rate == -1) System.out.println("Course " + getName() + " is not over yet, job placement rate is not calculated yet!");
         else System.out.println("Job placement rate Course " + getName() + " is: " + jobPlacementRate() + "%");
     }
 
@@ -217,11 +219,11 @@ public class Course {
     }
 
 
-    public boolean modulesCoverEntirePeriod() {
+    public boolean modulesDoesNotCoverEntirePeriod() {
         long sumModulesDays = 0;
         for (Module module : getModules()) {
             sumModulesDays += module.calcAllModuleTimeInDays();
         }
-        return sumModulesDays >= calcCourseTimeInDays();
+        return sumModulesDays != calcCourseTimeInDays();
     }
 }

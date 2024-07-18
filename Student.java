@@ -1,5 +1,6 @@
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Student extends Person {
     private Course hisCourse;
@@ -70,5 +71,17 @@ public class Student extends Person {
     public void addFeedback(Course course, String s, double review) {
         if (this.hisCourse == course) course.addFeedbackForCourse(this, s, review);
         else System.out.printf("Student %s %s was not in course %s. It's not possible to add a feedback.%n", getFirstname(), getLastname(), course.getName());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(getFirstname(), student.getFirstname()) &&
+                Objects.equals(getLastname(), student.getLastname()) &&
+                Objects.equals(getBIRTHDAY(), student.getBIRTHDAY()) &&
+                Objects.equals(getAddress(), student.getAddress()) &&
+                Objects.equals(getEmail(), student.getEmail());
     }
 }
