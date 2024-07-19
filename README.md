@@ -14,8 +14,8 @@ Das Ziel dieses Projekts ist die Entwicklung einer umfassenden Softwarelösung f
 
 ## Entwickler
 
-- [Entwickler 1](https://github.com/ReBehrens)
-- [Entwickler 2](https://github.com/VittorioDeMarzi)
+- [Vittorio](https://github.com/VittorioDeMarzi)
+- [René](https://github.com/ReBehrens)
 
 
 ## Lizenz
