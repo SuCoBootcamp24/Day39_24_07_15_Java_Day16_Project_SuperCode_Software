@@ -62,29 +62,21 @@ public class AdministrationErrors {
         // -----Module1, Module2 for course1
         // ------Module1 inkl. Tasks (>) für den Kurse erstelle------
         Module module1 = new Module("GIT1", start0101,end0202, "GIT");
-        for (int i = 0; i < module1.calcAllModuleTimeInDays(); i++) {
-            module1.addTaskToList(new Task("name " + i, "null", 1));
-        }
+        fillUpModule(module1);
 
         // ------Module2 inkl. Tasks (>) für den Kurse erstellen------
         Module module2 = new Module("JAVA2", start0101,end0404, "JAVA");
-        for (int i = 0; i < module2.calcAllModuleTimeInDays(); i++) {
-            module2.addTaskToList(new Task("name " + i, "null", 1));
-        }
+        fillUpModule(module2);
 
         // - Module3 and Module4 for course2
         // ------Module3 inkl. Tasks (>) für den Kurse erstelle------
         Module module3 = new Module("HTML3", start0302,start0504, "HTML");
-        for (int i = 0; i < module3.calcAllModuleTimeInDays(); i++) {
-            module3.addTaskToList(new Task("name " + i, "null", 1));
-        }
+        fillUpModule(module3);
 
         // - Module3 and Module4 for course2
         // ------Module3 inkl. Tasks (>) für den Kurse erstelle------
         Module module4 = new Module("HTML3", start0302,end0404, "HTML");
-        for (int i = 0; i < module3.calcAllModuleTimeInDays(); i++) {
-            module3.addTaskToList(new Task("name " + i, "null", 1));
-        }
+        fillUpModule(module4);
 
         // ------Module zum Kurs1 hinzufuegen------
         System.out.println(ANSI_PURPLE_BACKGROUND + "Module im Kurs speicher " + ANSI_RESET );
@@ -203,5 +195,11 @@ public class AdministrationErrors {
         Trainer trainer8 = new Trainer("Martina", "Gallo", LocalDate.of(1995, 9, 18), "Via Leopardi 8, Palermo", "martina.gallo@example.com", LocalDate.of(2023, 5, 30));
 
         return new ArrayList<>(List.of(trainer1, trainer2, trainer3, trainer4, trainer5,trainer6, trainer7, trainer8));
+    }
+
+    private static void fillUpModule(Module module1) {
+        for (int i = 0; i < module1.calcAllModuleTimeInDays(); i++) {
+            module1.addTaskToList(new Task("name " + i, "null", 1));
+        }
     }
 }

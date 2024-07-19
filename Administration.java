@@ -72,28 +72,20 @@ public class Administration {
         // -----Module1, Module2 for course1
         // ------Module1 inkl. Tasks (>) für den Kurse erstelle------
         Module module1 = new Module("GIT1", start0101,end0202, "GIT");
-        for (int i = 0; i < module1.calcAllModuleTimeInDays(); i++) {
-            module1.addTaskToList(new Task("name " + i, "null", 1));
-        }
+        fillUpModule(module1);
 
         // ------Module2 inkl. Tasks (>) für den Kurse erstellen------
         Module module2 = new Module("JAVA2", start0302,end0404, "JAVA");
-        for (int i = 0; i < module2.calcAllModuleTimeInDays(); i++) {
-            module2.addTaskToList(new Task("name " + i, "null", 1));
-        }
+        fillUpModule(module2);
 
         // - Module3 and Module4 for course2
         // ------Module3 inkl. Tasks (>) für den Kurse erstelle------
         Module module3 = new Module("HTML3", start0504,end0606, "HTML");
-        for (int i = 0; i < module3.calcAllModuleTimeInDays(); i++) {
-            module3.addTaskToList(new Task("name " + i, "null", 1));
-        }
+        fillUpModule(module3);
 
         // -----Module4 inkl. Tasks (>) für den Kurse erstelle------
         Module module4 = new Module("FRONTEND4", start0706,end0808, "FRONTEND");
-        for (int i = 0; i < module4.calcAllModuleTimeInDays(); i++) {
-            module4.addTaskToList(new Task("name " + i, "null", 1));
-        }
+        fillUpModule(module4);
 
         System.out.println(ANSI_PURPLE_BACKGROUND + "Module im Kurs speicher " + ANSI_RESET );
         // ------Module zum Kurs1 hinzufuegen------
@@ -186,6 +178,12 @@ public class Administration {
         System.out.println(ANSI_CYAN_BACKGROUND + "Feedbackquote" + ANSI_RESET );
         company1.bestReviewedCourse();
 
+    }
+
+    private static void fillUpModule(Module module1) {
+        for (int i = 0; i < module1.calcAllModuleTimeInDays(); i++) {
+            module1.addTaskToList(new Task("name " + i, "null", 1));
+        }
     }
 
     private static ArrayList<Student> getStudentArrayList() {
