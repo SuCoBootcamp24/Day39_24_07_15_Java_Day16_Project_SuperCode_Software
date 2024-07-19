@@ -25,38 +25,13 @@ public class AdministrationErrors {
 
         // ------Personen erstellen------
         // ------Trainer erstellen----
-        Trainer trainer1 = new Trainer("Mario", "Rossi", LocalDate.of(1980, 5, 12), "Via Roma 1, Milano", "mario.rossi@example.com", LocalDate.of(2010, 1, 15));
-        Trainer trainer2 = new Trainer("Luisa", "Bianchi", LocalDate.of(1975, 7, 22), "Via Verdi 10, Roma", "luisa.bianchi@example.com", LocalDate.of(2012, 3, 10));
-        Trainer trainer3 = new Trainer("Giovanni", "Neri", LocalDate.of(1982, 3, 5), "Corso Italia 15, Torino", "giovanni.neri@example.com", LocalDate.of(2014, 8, 5));
-        Trainer trainer4 = new Trainer("Anna", "Verdi", LocalDate.of(1985, 11, 30), "Viale Trieste 22, Napoli", "anna.verdi@example.com", LocalDate.of(2016, 6, 1));
-        Trainer trainer5 = new Trainer("Francesco", "Bruni", LocalDate.of(1990, 1, 17), "Piazza Dante 3, Firenze", "francesco.bruni@example.com", LocalDate.of(2018, 9, 14));
-        Trainer trainer6 = new Trainer("Sara", "Rossi", LocalDate.of(1987, 4, 9), "Via Garibaldi 5, Bologna", "sara.rossi@example.com", LocalDate.of(2020, 2, 19));
-        Trainer trainer7 = new Trainer("Paolo", "Ferrari", LocalDate.of(1992, 6, 25), "Largo Manzoni 12, Genova", "paolo.ferrari@example.com", LocalDate.of(2021, 4, 21));
-        Trainer trainer8 = new Trainer("Martina", "Gallo", LocalDate.of(1995, 9, 18), "Via Leopardi 8, Palermo", "martina.gallo@example.com", LocalDate.of(2023, 5, 30));
-
-        ArrayList<Trainer> trainerList = new ArrayList<>(List.of(trainer1, trainer2, trainer3, trainer4, trainer5,trainer6, trainer7, trainer8));
+        ArrayList<Trainer> trainerList = getTrainerArrayList();
 
         // -----Trainer erhalten Lizenzen-----
-        trainer1.addLicenseToList("JAVA");
+        trainerList.get(0).addLicenseToList("JAVA");
 
         //------Student erstellen ----
-        ArrayList<Student> studentList = new ArrayList<>(List.of(
-                new Student("John", "Smith", LocalDate.of(2000, 1, 1), "123 Main St", "john.smith1@abc.de", "Java"),
-                new Student("Jane", "Doe", LocalDate.of(2000, 2, 2), "124 Main St", "jane.doe2@abc.de", "Java"),
-                new Student("Alice", "Johnson", LocalDate.of(2000, 3, 3), "125 Main St", "alice.johnson3@abc.de", "HTML"),
-                new Student("Bob", "Brown", LocalDate.of(2000, 4, 4), "126 Main St", "bob.brown4@abc.de", "Java"),
-                new Student("Charlie", "Davis", LocalDate.of(2000, 5, 5), "127 Main St", "charlie.davis5@abc.de", "HTML"),
-                new Student("Diana", "Miller", LocalDate.of(2000, 6, 6), "128 Main St", "diana.miller6@abc.de", "Java"),
-                new Student("Eve", "Wilson", LocalDate.of(2000, 7, 7), "129 Main St", "eve.wilson7@abc.de", "Java"),
-                new Student("Frank", "Moore", LocalDate.of(2000, 8, 8), "130 Main St", "frank.moore8@abc.de", "Java"),
-                new Student("Grace", "Taylor", LocalDate.of(2000, 9, 9), "131 Main St", "grace.taylor9@abc.de", "Java"),
-                new Student("Hank", "Anderson", LocalDate.of(2000, 10, 10), "132 Main St", "hank.anderson10@abc.de", "HTML"),
-                new Student("Ivy", "Thomas", LocalDate.of(2000, 11, 11), "133 Main St", "ivy.thomas11@abc.de", "HTML"),
-                new Student("Jack", "Jackson", LocalDate.of(2000, 12, 12), "134 Main St", "jack.jackson12@abc.de", "Java"),
-                new Student("Kelly", "White", LocalDate.of(2001, 1, 13), "135 Main St", "kelly.white13@abc.de", "HTML"),
-                new Student("Leo", "Harris", LocalDate.of(2001, 2, 14), "136 Main St", "leo.harris14@abc.de", "HTML"),
-                new Student("Mia", "Martin", LocalDate.of(2001, 3, 15), "137 Main St", "mia.martin15@abc.de", "HTML")
-        ));
+        ArrayList<Student> studentList = getStudentArrayList();
 
         // ------Bildungsunternehmen------
         EducationalCompany company1 = new EducationalCompany("SuperTest", inCompanyDate, "Software-Development");
@@ -179,5 +154,38 @@ public class AdministrationErrors {
 
 
 
+    }
+
+    private static ArrayList<Student> getStudentArrayList() {
+       return new ArrayList<>(List.of(
+                new Student("John", "Smith", LocalDate.of(2000, 1, 1), "123 Main St", "john.smith1@abc.de", "Java"),
+                new Student("Jane", "Doe", LocalDate.of(2000, 2, 2), "124 Main St", "jane.doe2@abc.de", "Java"),
+                new Student("Alice", "Johnson", LocalDate.of(2000, 3, 3), "125 Main St", "alice.johnson3@abc.de", "HTML"),
+                new Student("Bob", "Brown", LocalDate.of(2000, 4, 4), "126 Main St", "bob.brown4@abc.de", "Java"),
+                new Student("Charlie", "Davis", LocalDate.of(2000, 5, 5), "127 Main St", "charlie.davis5@abc.de", "HTML"),
+                new Student("Diana", "Miller", LocalDate.of(2000, 6, 6), "128 Main St", "diana.miller6@abc.de", "Java"),
+                new Student("Eve", "Wilson", LocalDate.of(2000, 7, 7), "129 Main St", "eve.wilson7@abc.de", "Java"),
+                new Student("Frank", "Moore", LocalDate.of(2000, 8, 8), "130 Main St", "frank.moore8@abc.de", "Java"),
+                new Student("Grace", "Taylor", LocalDate.of(2000, 9, 9), "131 Main St", "grace.taylor9@abc.de", "Java"),
+                new Student("Hank", "Anderson", LocalDate.of(2000, 10, 10), "132 Main St", "hank.anderson10@abc.de", "HTML"),
+                new Student("Ivy", "Thomas", LocalDate.of(2000, 11, 11), "133 Main St", "ivy.thomas11@abc.de", "HTML"),
+                new Student("Jack", "Jackson", LocalDate.of(2000, 12, 12), "134 Main St", "jack.jackson12@abc.de", "Java"),
+                new Student("Kelly", "White", LocalDate.of(2001, 1, 13), "135 Main St", "kelly.white13@abc.de", "HTML"),
+                new Student("Leo", "Harris", LocalDate.of(2001, 2, 14), "136 Main St", "leo.harris14@abc.de", "HTML"),
+                new Student("Mia", "Martin", LocalDate.of(2001, 3, 15), "137 Main St", "mia.martin15@abc.de", "HTML")
+        ));
+    }
+
+    private static ArrayList<Trainer> getTrainerArrayList() {
+        Trainer trainer1 = new Trainer("Mario", "Rossi", LocalDate.of(1980, 5, 12), "Via Roma 1, Milano", "mario.rossi@example.com", LocalDate.of(2010, 1, 15));
+        Trainer trainer2 = new Trainer("Luisa", "Bianchi", LocalDate.of(1975, 7, 22), "Via Verdi 10, Roma", "luisa.bianchi@example.com", LocalDate.of(2012, 3, 10));
+        Trainer trainer3 = new Trainer("Giovanni", "Neri", LocalDate.of(1982, 3, 5), "Corso Italia 15, Torino", "giovanni.neri@example.com", LocalDate.of(2014, 8, 5));
+        Trainer trainer4 = new Trainer("Anna", "Verdi", LocalDate.of(1985, 11, 30), "Viale Trieste 22, Napoli", "anna.verdi@example.com", LocalDate.of(2016, 6, 1));
+        Trainer trainer5 = new Trainer("Francesco", "Bruni", LocalDate.of(1990, 1, 17), "Piazza Dante 3, Firenze", "francesco.bruni@example.com", LocalDate.of(2018, 9, 14));
+        Trainer trainer6 = new Trainer("Sara", "Rossi", LocalDate.of(1987, 4, 9), "Via Garibaldi 5, Bologna", "sara.rossi@example.com", LocalDate.of(2020, 2, 19));
+        Trainer trainer7 = new Trainer("Paolo", "Ferrari", LocalDate.of(1992, 6, 25), "Largo Manzoni 12, Genova", "paolo.ferrari@example.com", LocalDate.of(2021, 4, 21));
+        Trainer trainer8 = new Trainer("Martina", "Gallo", LocalDate.of(1995, 9, 18), "Via Leopardi 8, Palermo", "martina.gallo@example.com", LocalDate.of(2023, 5, 30));
+
+        return new ArrayList<>(List.of(trainer1, trainer2, trainer3, trainer4, trainer5,trainer6, trainer7, trainer8));
     }
 }
