@@ -4,7 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Administration {
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
+
+
     public static void main(String[] args) {
+
 
 
         // ------Date variablen erstellen------
@@ -45,6 +52,7 @@ public class Administration {
         EducationalCompany company1 = new EducationalCompany("SuperTest", inCompanyDate, "Software-Development");
         Ceo ceo1 = new Ceo("Reiner", "Zufall", birthday, "address", "a@a.de", inCompanyDate, company1);
 
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Ceo: " + ANSI_RESET );
         System.out.println(ceo1);
 
         // ------Trainer ins Unternehmen einstellen.------
@@ -87,6 +95,7 @@ public class Administration {
             module4.addTaskToList(new Task("name " + i, "null", 1));
         }
 
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Module im Kurs speicher " + ANSI_RESET );
         // ------Module zum Kurs1 hinzufuegen------
         course1.addModule(module1);
         course1.addModule(module2);
@@ -100,10 +109,12 @@ public class Administration {
         company1.addCourse(course2);
 
         // ------Kurse aus dem Unternehmen anzeigenlassen------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Kurse in Unternehmen" + ANSI_RESET );
         company1.printCourse();
         System.out.println();
 
         // ------Alle Module im Kurs1 anzeigenlassen------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Module im Kurs " + ANSI_RESET );
         course1.printModules();
         System.out.println();
 
@@ -112,6 +123,7 @@ public class Administration {
         System.out.println();
 
         // ------Trainer zu den Kursen hinzufuegen------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Trainer Zuordnung" + ANSI_RESET );
         company1.addTrainerToCourse(course1);
         System.out.println();
 
@@ -119,16 +131,19 @@ public class Administration {
         System.out.println();
 
         // ------Assistent trainer zu dem Kurs hinzufuegen------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Assistenttrainer Zuordnung" + ANSI_RESET );
         company1.addAssistTrainerToCourse(course1);
         company1.addAssistTrainerToCourse(course2);
         System.out.println();
 
 
         // -----Alle Trainer im Kurs anzeigen-----
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Zugeorndete mitarbeiter in den Modulen" + ANSI_RESET );
         course1.showAllTrainersInAllModules();
         System.out.println();
 
         // -----Teilnehmer in die gewuenschen Kurse verteilen----
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Zuordnung der Teilnehmer in die Kurse" + ANSI_RESET );
         company1.addStudentToCourse(course1);
         System.out.println();
         company1.addStudentToCourse(course2);
@@ -142,18 +157,19 @@ public class Administration {
         studentList.get(5).setJobBegin(LocalDate.now());
 
         // ------- STATISTIK---------
+        System.out.println(ANSI_CYAN_BACKGROUND + "STATISTIK" + ANSI_RESET );
         // # Jobvermittlungsquote
         // Bester / Schlechtester Kurs bis heute
-        System.out.println("Best Course With Job Placement Rate");
+        System.out.println(ANSI_CYAN_BACKGROUND + "Best Course With Job Placement Rate" + ANSI_RESET );
         company1.bestCourseWithJobPlacementRate();
         System.out.println();
         // Bester / Schlechtester Kurs bis n Tage nach Kursende
-        System.out.println("Best Course With Job Placement Rate after 30 days");
+        System.out.println(ANSI_CYAN_BACKGROUND + "Best Course With Job Placement Rate after 30 days" + ANSI_RESET );
         company1.bestCourseWithJobPlacementRateAfterNDays(30);
         System.out.println();
 
         // Jobvermittlungsquote eines Kurses
-
+        System.out.println(ANSI_CYAN_BACKGROUND + "Jobvermittlungsquote" + ANSI_RESET );
         course1.printJobPlacementRate();
         System.out.println();
 
@@ -167,6 +183,7 @@ public class Administration {
 
         System.out.println();
         // Bewertungsergebnisse des Kurses
+        System.out.println(ANSI_CYAN_BACKGROUND + "Feedbackquote" + ANSI_RESET );
         company1.bestReviewedCourse();
 
     }

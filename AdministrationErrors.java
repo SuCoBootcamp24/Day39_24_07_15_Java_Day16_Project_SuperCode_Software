@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdministrationErrors {
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
+
     public static void main(String[] args) {
 
 
@@ -37,6 +42,7 @@ public class AdministrationErrors {
         EducationalCompany company1 = new EducationalCompany("SuperTest", inCompanyDate, "Software-Development");
         Ceo ceo1 = new Ceo("Reiner", "Zufall", birthday, "address", "a@a.de", inCompanyDate, company1);
 
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Ceo: " + ANSI_RESET );
         System.out.println(ceo1);
 
         // ------Trainer ins Unternehmen einstellen.------
@@ -81,12 +87,14 @@ public class AdministrationErrors {
         }
 
         // ------Module zum Kurs1 hinzufuegen------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Module im Kurs speicher " + ANSI_RESET );
         course1.addModule(module1);
         course1.addModule(module2);
         course1.addModule(module3);
         course1.addModule(module4);
 
         // -----Kurs in das Unternehmen speichern-------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Kurse in Unternehmen" + ANSI_RESET );
         company1.addCourse(course1);
 
         // ------Kurse aus dem Unternehmen anzeigenlassen------
@@ -94,25 +102,30 @@ public class AdministrationErrors {
         System.out.println();
 
         // ------Alle Module im Kurs1 anzeigenlassen------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "alle Module im Kurs" + ANSI_RESET );
         course1.printModules();
         System.out.println();
 
 
         // ------Trainer zu den Kursen hinzufuegen------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Trainer Zuordnung" + ANSI_RESET );
         company1.addTrainerToCourse(course1);
         System.out.println();
 
 
         // ------Assistent trainer zu dem Kurs hinzufuegen------
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Assistenttrainer Zuordnung" + ANSI_RESET );
         company1.addAssistTrainerToCourse(course1);
         System.out.println();
 
 
         // -----Alle Trainer im Kurs anzeigen-----
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Zugeorndete mitarbeiter in den Modulen" + ANSI_RESET );
         course1.showAllTrainersInAllModules();
         System.out.println();
 
         // -----Teilnehmer in die gewuenschen Kurse verteilen----
+        System.out.println(ANSI_PURPLE_BACKGROUND + "Zuordnung der Teilnehmer in die Kurse" + ANSI_RESET );
         company1.addStudentToCourse(course1);
         System.out.println();
 
@@ -124,24 +137,26 @@ public class AdministrationErrors {
         studentList.get(5).setJobBegin(LocalDate.now());
 
         // ------- STATISTIK---------
+        System.out.println(ANSI_CYAN_BACKGROUND + "STATISTIK" + ANSI_RESET );
         // # Jobvermittlungsquote
         // Bester / Schlechtester Kurs bis heute
-        System.out.println("Best Course With Job Placement Rate");
+        System.out.println(ANSI_CYAN_BACKGROUND + "Best Course With Job Placement Rate" + ANSI_RESET );
         company1.bestCourseWithJobPlacementRate();
         System.out.println();
         // Bester / Schlechtester Kurs bis n Tage nach Kursende
-        System.out.println("Best Course With Job Placement Rate after 30 days");
+        System.out.println(ANSI_CYAN_BACKGROUND + "Best Course With Job Placement Rate after 30 days" + ANSI_RESET );
         company1.bestCourseWithJobPlacementRateAfterNDays(30);
         System.out.println();
 
         // Jobvermittlungsquote eines Kurses
-
+        System.out.println(ANSI_CYAN_BACKGROUND + "Jobvermittlungsquote" + ANSI_RESET );
         course1.printJobPlacementRate();
         System.out.println();
 
         // # Bewertung des Kurses von den Absolventen
 
         // Studenten bewerten den Kurs
+        System.out.println(ANSI_CYAN_BACKGROUND + "Bewertung der Kurse" + ANSI_RESET );
         studentList.get(0).addFeedback(course1, "This course provided great insights and practical knowledge. Highly recommend!", 5);
         studentList.get(1).addFeedback(course1, "Very informative course with good examples. Could use a bit more depth in certain areas.", 4);
         studentList.get(3).addFeedback(course2, "The course content was okay, but I found the delivery a bit lacking. Needs improvement.", 2);
@@ -149,6 +164,7 @@ public class AdministrationErrors {
 
         System.out.println();
         // Bewertungsergebnisse des Kurses
+        System.out.println(ANSI_CYAN_BACKGROUND + "Feedbackquote" + ANSI_RESET );
         company1.bestReviewedCourse();
 
 
