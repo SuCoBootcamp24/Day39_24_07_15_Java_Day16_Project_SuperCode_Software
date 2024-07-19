@@ -19,7 +19,7 @@ Das Ziel dieses Projekts ist die Entwicklung einer umfassenden Softwarelösung f
 
 ## UML-Modeling (Miro-Board)
 
-- [zum Board]([https://github.com/ReBehrens](https://miro.com/app/board/uXjVKyomqCw=/?share_link_id=9697380073))
+- [zum Board]([https://github.com/ReBehrens](https://miro.com/app/board/uXjVKyomqCw=/?share_link_id=9697380073)
 
 ## Lizenz
 
